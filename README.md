@@ -2,7 +2,7 @@ Event Registration Application
 ==
 Team members: Jirawat Zhou, Emre Gucer
 
-###Project Description
+### Project Description
 Proposed a web application that allows organizers to manage their events and attendees. While attendees can look and search for events that they are interested in and sign up for the events.
 
 ### UML Diagram
