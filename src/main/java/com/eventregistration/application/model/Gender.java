@@ -1,4 +1,3 @@
 package com.eventregistration.application.model;
 
-public enum Gender {
-}
+public enum Gender { MALE, FEMALE, NONBINARY, OTHER }
