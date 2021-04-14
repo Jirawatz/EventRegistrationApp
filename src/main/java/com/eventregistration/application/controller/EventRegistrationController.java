@@ -1,8 +1,10 @@
 package com.eventregistration.application.controller;
 
 import com.eventregistration.application.model.Customer;
+import com.eventregistration.application.model.Events;
 import com.eventregistration.application.model.Organizer;
 import com.eventregistration.application.repository.CustomerRepository;
+import com.eventregistration.application.repository.EventRepository;
 import com.eventregistration.application.repository.OrganizerRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,9 @@ public class EventRegistrationController {
   @Autowired
   OrganizerRepository organizerRepository;
 
+  @Autowired
+  EventRepository eventRepository;
+
   @GetMapping(value = "/hello")
   public String helloWorld() {
     return "HelloWord";
@@ -35,6 +40,7 @@ public class EventRegistrationController {
     return (List<Organizer>) organizerRepository.findAll();
   }
 
-
+  @GetMapping(value = "/api/events/all")
+  public List<Events> allEvent() { return (List<Events>) eventRepository.findAll(); }
 
 }
