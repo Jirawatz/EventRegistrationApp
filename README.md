@@ -6,6 +6,7 @@ Team members: Jirawat Zhou, Emre Gucer
 Proposed a web application that allows organizers to manage their events and attendees. While attendees can look and search for events that they are interested in and sign up for the events.
 
 ### UML Diagram
+![alt text](ProjectUML.jpg)
 
 ### Description of User Data Model
 Customer Model: Represent the customer which contained the following information
@@ -40,7 +41,7 @@ Register model: Represent each sign up reocord between the customer and the even
 3. EventId which represent the event
 ```
 
-Host model: Represent each host record between the organizer and the events that take place, which will contain the following information
+Schedule model: Represent each host record between the organizer and the events that take place, which will contain the following information
 ```
 1. RegistrationId which represent the id which it will represent for each sign up record
 2. CustomerId which represent the customer
@@ -57,16 +58,23 @@ Events Model: Represent the event which will contain the following information
 6. Fee which represent the fee to enter a event
 ```
 
+Review Model: Represent the review for which customer can create a review for any events
+```
+1. score for which a customer can review
+2. comment for which a customer can comment/review the events
+3. CustomerId which represent the customer
+4. EventId which represent the event
+```
+
 ### User to Objects Relationships
 Customer and Events is a many-to-many relationship which one customer can register for many events 
 while many events can have many customers. Therefore Register table is created to mediates the many relationship between User and Event object.
 
-Organizer and Event is a many-to-many relationship which one organizer can host many events and many events can also have many host. Therefore a host table is create to mediate the many-to-many relationship between Organizer and Event objects.
+Organizer and Event is a many-to-many relationship which one organizer can schedule many events and many events can also have many schedule. Therefore a host table is create to mediate the many-to-many relationship between Organizer and Event objects.
 
+Customer and Review is a one-to-many relationship since a customer can have many review, while each review only have one customer.
 ### Domain to Domain Relationship
-Registration to Event have one-to-many relationship where events can have many registration while registration can register for one events
-
-Host and Event also have one-to-many relationship where events can have many hosts, while a host can only host one event.
+Event and Review is a one-to-many relationship since a event can have many reviews and a review can only have one event.  
 
 ### Description of Portable Enumeration
 Gender Portable Enum: which contained all the possible gender for customer
