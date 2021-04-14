@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Customer")
+@Table(name = "customers")
 public class Customer {
 
   @Id
@@ -29,7 +29,6 @@ public class Customer {
   private Gender gender;
 
 
-  @Column(name = "id", nullable = false)
   public Integer getId() {
     return id;
   }
@@ -38,7 +37,6 @@ public class Customer {
     this.id = id;
   }
 
-  @Column(name = "firstName")
   public String getFirstName() {
     return firstName;
   }
@@ -48,7 +46,6 @@ public class Customer {
     this.firstName = firstName;
   }
 
-  @Column(name = "lastName")
   public String getLastName() {
     return lastName;
   }
@@ -57,7 +54,6 @@ public class Customer {
     this.lastName = lastName;
   }
 
-  @Column(name = "username")
   public String getUsername() {
     return username;
   }
@@ -66,7 +62,6 @@ public class Customer {
     this.username = username;
   }
 
-  @Column(name = "password")
   public String getPassword() {
     return password;
   }
@@ -75,7 +70,6 @@ public class Customer {
     this.password = password;
   }
 
-  @Column(name = "email")
   public String getEmail() {
     return email;
   }
@@ -84,7 +78,6 @@ public class Customer {
     this.email = email;
   }
 
-  @Column(name = "dateOfBirth")
   public Date getDateOfBirth() {
     return dateOfBirth;
   }
@@ -93,7 +86,6 @@ public class Customer {
     this.dateOfBirth = dateOfBirth;
   }
 
-  @Column(name = "age")
   public Integer getAge() {
     return age;
   }
@@ -102,7 +94,6 @@ public class Customer {
     this.age = age;
   }
 
-  @Column(name = "gender")
   public Gender getGender() {
     return gender;
   }
