@@ -55,16 +55,16 @@ Review Model: Represent the review for which customer can create a review for an
 
 ### User to Objects Relationships
 Customer and Events is a many-to-many relationship which one customer can register for many events 
-while many events can have many customers. Therefore Register table is created to mediates the many relationship between User and Event object.
+while many events can have many customers. Therefore Register table is created to mediates the many relationship between User and Event object which have following attribute:
 
-Organizer and Event is a many-to-many relationship which one organizer can schedule many events and many events can also have many schedule. Therefore a host table is create to mediate the many-to-many relationship between Organizer and Event objects.
-
-Register model: Represent each sign up reocord between the customer and the events that take place, which will contain the following information
+Register model: Represent each sign up record between customer and the events that take place, which will contain the following information
 ```
 1. RegistrationId which represent the id which it will represent for each sign up record
 2. CustomerId which represent the customer
 3. EventId which represent the event
 ```
+
+Organizer and Event is a many-to-many relationship which one organizer can schedule many events and many events can also have many schedule. Therefore a host table is create to mediates the many-to-many relationship between Organizer and Event objects which have the following attribute:
 
 Schedule model: Represent each host record between the organizer and the events that take place, which will contain the following information
 ```
