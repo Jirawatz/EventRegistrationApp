@@ -34,19 +34,6 @@ Organizer Model: Represent the organizer which contained the following informati
 ```
 
 ### Description of Domain Objects
-Register model: Represent each sign up reocord between the customer and the events that take place, which will contain the following information
-```
-1. RegistrationId which represent the id which it will represent for each sign up record
-2. CustomerId which represent the customer
-3. EventId which represent the event
-```
-
-Schedule model: Represent each host record between the organizer and the events that take place, which will contain the following information
-```
-1. RegistrationId which represent the id which it will represent for each sign up record
-2. CustomerId which represent the customer
-3. EventId which represent the event
-```
 
 Events Model: Represent the event which will contain the following information
 ```
@@ -72,6 +59,19 @@ while many events can have many customers. Therefore Register table is created t
 
 Organizer and Event is a many-to-many relationship which one organizer can schedule many events and many events can also have many schedule. Therefore a host table is create to mediate the many-to-many relationship between Organizer and Event objects.
 
+Register model: Represent each sign up reocord between the customer and the events that take place, which will contain the following information
+```
+1. RegistrationId which represent the id which it will represent for each sign up record
+2. CustomerId which represent the customer
+3. EventId which represent the event
+```
+
+Schedule model: Represent each host record between the organizer and the events that take place, which will contain the following information
+```
+1. OrganizeId which represent the id which it will represent for each sign up record
+2. CustomerId which represent the customer
+3. EventId which represent the event
+```
 Customer and Review is a one-to-many relationship since a customer can have many review, while each review only have one customer.
 ### Domain to Domain Relationship
 Event and Review is a one-to-many relationship since a event can have many reviews and a review can only have one event.  
