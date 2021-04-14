@@ -9,26 +9,26 @@ Proposed a web application that allows organizers to manage their events and att
 ![alt text](ProjectUML.jpg)
 
 ### Description of User Data Model
-Customer Model: Represent the customer.js which contained the following information
+Customer Model: Represent the customer which contained the following information
 ```
-1. first name which represent customer.js first name
-2. last name which represent customer.js last name
-3. username which allow customer.js to fill in to specify their username
+1. first name which represent customer first name
+2. last name which represent customer last name
+3. username which allow customer to fill in to specify their username
 4. password which authenticate the user if necessary
-5. email which represent customer.js contact information
-6. dateOfbirth which represent customer.js's Date of Birth
-7. age which represent customer.js's age
-8. gender which represent customer.js's gender (Implement with Protable Enum)
+5. email which represent customer contact information
+6. dateOfbirth which represent customer's Date of Birth
+7. age which represent customer's age
+8. gender which represent customer's gender (Implement with Protable Enum)
 ```
 
 Organizer Model: Represent the organizer which contained the following information
 ```
-1. first name which represent customer.js first name
-2. last name which represent customer.js last name
-3. username which allow customer.js to fill in to specify their username
+1. first name which represent customer first name
+2. last name which represent customer last name
+3. username which allow customer to fill in to specify their username
 4. password which authenticate the user if necessary
-5. email which represent customer.js contact information
-6. dateOfbirth which represent customer.js's Date of Birth
+5. email which represent customer contact information
+6. dateOfbirth which represent customer's Date of Birth
 7. company name which represent the organizer's company
 8. phone which represent organizer contact information
 ```
@@ -45,39 +45,39 @@ Events Model: Represent the event which will contain the following information
 6. Fee which represent the fee to enter a event
 ```
 
-Review Model: Represent the review for which customer.js can create a review for any events
+Review Model: Represent the review for which customer can create a review for any events
 ```
-1. score for which a customer.js can review
-2. comment for which a customer.js can comment/review the events
-3. CustomerId which represent the customer.js
+1. score for which a customer can review
+2. comment for which a customer can comment/review the events
+3. CustomerId which represent the customer
 4. EventId which represent the event
 ```
 
 ### User to Objects Relationships
-Customer and Events is a many-to-many relationship which one customer.js can register for many events 
-while many events can have many customers. Therefore Register table is created to mediates the many relationship between User and Event object which have following attribute:
+Customer and Events is a many-to-many relationship which one customer can register for many events 
+while many events can have many customers. Therefore Register table is created to mediates the many relationship between User and Event object.
 
-Register model: Represent each sign up record between customer.js and the events that take place, which will contain the following information
+Organizer and Event is a many-to-many relationship which one organizer can schedule many events and many events can also have many schedule. Therefore a host table is create to mediate the many-to-many relationship between Organizer and Event objects.
+
+Register model: Represent each sign up reocord between the customer and the events that take place, which will contain the following information
 ```
 1. RegistrationId which represent the id which it will represent for each sign up record
-2. CustomerId which represent the customer.js
+2. CustomerId which represent the customer
 3. EventId which represent the event
 ```
-
-Organizer and Event is a many-to-many relationship which one organizer can schedule many events and many events can also have many schedule. Therefore a host table is create to mediates the many-to-many relationship between Organizer and Event objects which have the following attribute:
 
 Schedule model: Represent each host record between the organizer and the events that take place, which will contain the following information
 ```
 1. OrganizeId which represent the id which it will represent for each sign up record
-2. CustomerId which represent the customer.js
+2. CustomerId which represent the customer
 3. EventId which represent the event
 ```
-Customer and Review is a one-to-many relationship since a customer.js can have many review, while each review only have one customer.js.
+Customer and Review is a one-to-many relationship since a customer can have many review, while each review only have one customer.
 ### Domain to Domain Relationship
 Event and Review is a one-to-many relationship since a event can have many reviews and a review can only have one event.  
 
 ### Description of Portable Enumeration
-Gender Portable Enum: which contained all the possible gender for customer.js
+Gender Portable Enum: which contained all the possible gender for customer
 ```
 1. Male
 2. Female
