@@ -3,9 +3,11 @@ package com.eventregistration.application.controller;
 import com.eventregistration.application.model.Customer;
 import com.eventregistration.application.model.Events;
 import com.eventregistration.application.model.Organizer;
+import com.eventregistration.application.model.Reviews;
 import com.eventregistration.application.repository.CustomerRepository;
 import com.eventregistration.application.repository.EventRepository;
 import com.eventregistration.application.repository.OrganizerRepository;
+import com.eventregistration.application.repository.ReviewRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +27,9 @@ public class EventRegistrationController {
   @Autowired
   EventRepository eventRepository;
 
+  @Autowired
+  ReviewRepository reviewRepository;
+
   @GetMapping(value = "/hello")
   public String helloWorld() {
     return "HelloWord";
@@ -42,5 +47,8 @@ public class EventRegistrationController {
 
   @GetMapping(value = "/api/events/all")
   public List<Events> allEvent() { return (List<Events>) eventRepository.findAll(); }
+
+  @GetMapping(value = "/api/review/all")
+  public List<Reviews> allReview() { return (List<Reviews>) reviewRepository.findAll(); }
 
 }
