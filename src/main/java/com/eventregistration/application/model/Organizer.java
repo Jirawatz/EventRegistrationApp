@@ -21,7 +21,7 @@ public class Organizer {
   private String email;
   private Date dateOfBirth;
   private String company;
-  private Integer phone;
+  private String phone;
 
   public Organizer() {
   }
@@ -90,11 +90,11 @@ public class Organizer {
     this.company = company;
   }
 
-  public Integer getPhone() {
+  public String getPhone() {
     return phone;
   }
 
-  public void setPhone(Integer phone) {
+  public void setPhone(String phone) {
     this.phone = phone;
   }
 }

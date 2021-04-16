@@ -1,0 +1,142 @@
+[
+  {
+    "firstName": "Nina",
+    "lastName": "Hood",
+    "username": "ninahood@biospan.com",
+    "password": "7d0ceeb3-9caa-4d46-a4a3-a6279e5a1f3a",
+    "email": "ninahood@biospan.com",
+    "dateOfBirth": "2014-12-17",
+    "company": "Quotezart",
+    "phone": "(902) 532-3492"
+  },
+  {
+    "firstName": "Karen",
+    "lastName": "Santos",
+    "username": "karensantos@quotezart.com",
+    "password": "86262594-f218-48eb-9136-4e7ebe005536",
+    "email": "karensantos@quotezart.com",
+    "dateOfBirth": "2014-01-24",
+    "company": "Coriander",
+    "phone": "(946) 492-3259"
+  },
+  {
+    "firstName": "Whitfield",
+    "lastName": "Merrill",
+    "username": "whitfieldmerrill@coriander.com",
+    "password": "7bd70f9d-6bbe-4593-ab16-dc9474508a99",
+    "email": "whitfieldmerrill@coriander.com",
+    "dateOfBirth": "2021-01-08",
+    "company": "Pyramax",
+    "phone": "(943) 520-3199"
+  },
+  {
+    "firstName": "Violet",
+    "lastName": "Nelson",
+    "username": "violetnelson@pyramax.com",
+    "password": "c99152db-2cc3-4709-a482-a1fb392c1ed8",
+    "email": "violetnelson@pyramax.com",
+    "dateOfBirth": "2018-07-14",
+    "company": "Locazone",
+    "phone": "(844) 520-3603"
+  },
+  {
+    "firstName": "Frieda",
+    "lastName": "Gibson",
+    "username": "friedagibson@locazone.com",
+    "password": "f57eaa9a-31b7-453b-a34d-3b420fdcea7e",
+    "email": "friedagibson@locazone.com",
+    "dateOfBirth": "2014-06-10",
+    "company": "Suremax",
+    "phone": "(888) 451-3577"
+  },
+  {
+    "firstName": "Marisa",
+    "lastName": "Evans",
+    "username": "marisaevans@suremax.com",
+    "password": "6c01ddc4-9e5c-4a4b-805a-47ed07f90520",
+    "email": "marisaevans@suremax.com",
+    "dateOfBirth": "2021-01-20",
+    "company": "Hometown",
+    "phone": "(802) 462-3019"
+  },
+  {
+    "firstName": "Kelly",
+    "lastName": "Randall",
+    "username": "kellyrandall@hometown.com",
+    "password": "16df671c-1b0f-4f18-b8ab-eb60d311fd72",
+    "email": "kellyrandall@hometown.com",
+    "dateOfBirth": "2017-03-01",
+    "company": "Comtest",
+    "phone": "(897) 425-2344"
+  },
+  {
+    "firstName": "Stacy",
+    "lastName": "Hays",
+    "username": "stacyhays@comtest.com",
+    "password": "ed35d818-e9ad-4b3a-aed6-d52523cc0abc",
+    "email": "stacyhays@comtest.com",
+    "dateOfBirth": "2020-01-02",
+    "company": "Sultraxin",
+    "phone": "(977) 425-2025"
+  },
+  {
+    "firstName": "Chrystal",
+    "lastName": "Nunez",
+    "username": "chrystalnunez@sultraxin.com",
+    "password": "a44908c3-3b5f-427a-8e6c-817085cd9860",
+    "email": "chrystalnunez@sultraxin.com",
+    "dateOfBirth": "2018-04-19",
+    "company": "Magnemo",
+    "phone": "(997) 590-2080"
+  },
+  {
+    "firstName": "Arlene",
+    "lastName": "Schmidt",
+    "username": "arleneschmidt@magnemo.com",
+    "password": "6eaaeccc-3ff7-40b5-8aca-3f150b761ca2",
+    "email": "arleneschmidt@magnemo.com",
+    "dateOfBirth": "2019-08-03",
+    "company": "Turnling",
+    "phone": "(952) 547-2814"
+  },
+  {
+    "firstName": "Rhodes",
+    "lastName": "Sawyer",
+    "username": "rhodessawyer@turnling.com",
+    "password": "8d1029ad-03f5-4a71-90e1-6fd799c03c8e",
+    "email": "rhodessawyer@turnling.com",
+    "dateOfBirth": "2019-07-08",
+    "company": "Terragen",
+    "phone": "(970) 554-2597"
+  },
+  {
+    "firstName": "Trudy",
+    "lastName": "Hall",
+    "username": "trudyhall@terragen.com",
+    "password": "377e2f8d-1f04-4d2d-9186-53eb6fad5591",
+    "email": "trudyhall@terragen.com",
+    "dateOfBirth": "2015-07-15",
+    "company": "Ebidco",
+    "phone": "(953) 422-3550"
+  },
+  {
+    "firstName": "Gertrude",
+    "lastName": "Lamb",
+    "username": "gertrudelamb@ebidco.com",
+    "password": "9bc83040-1637-4d98-b9bc-498f277db1ed",
+    "email": "gertrudelamb@ebidco.com",
+    "dateOfBirth": "2015-07-11",
+    "company": "Hawkster",
+    "phone": "(873) 529-2122"
+  },
+  {
+    "firstName": "Bush",
+    "lastName": "Vaughan",
+    "username": "bushvaughan@hawkster.com",
+    "password": "967783a9-2699-40c6-b372-0cf68e273c3b",
+    "email": "bushvaughan@hawkster.com",
+    "dateOfBirth": "2021-02-20",
+    "company": "Bisba",
+    "phone": "(989) 507-3127"
+  }
+]
