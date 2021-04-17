@@ -18,11 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class EventRegistrationController {
 
-  @Autowired
-  CustomerRepository customerRepository;
-
-  @Autowired
-  OrganizerRepository organizerRepository;
 
   @Autowired
   EventRepository eventRepository;
@@ -33,16 +28,6 @@ public class EventRegistrationController {
   @GetMapping(value = "/hello")
   public String helloWorld() {
     return "HelloWord";
-  }
-
-  @GetMapping(value = "/api/customer/all")
-  public List<Customer> allCustomer() {
-    return (List<Customer>) customerRepository.findAll();
-  }
-
-  @GetMapping(value = "/api/organizer/all")
-  public List<Organizer> allOrganizer() {
-    return (List<Organizer>) organizerRepository.findAll();
   }
 
   @GetMapping(value = "/api/events/all")
