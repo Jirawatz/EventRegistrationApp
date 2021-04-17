@@ -20,13 +20,13 @@ public class OrganizerSync implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    organizerRepository.deleteAll();
+    //organizerRepository.deleteAll();
 
     try {
       List<Organizer> organizersList = organizerService.fetchAll();
 
       for(Organizer organizer : organizersList) {
-        organizerRepository.save(organizer);
+        //organizerRepository.save(organizer);
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
