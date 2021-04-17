@@ -19,13 +19,13 @@ public class EventSync implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    eventRepository.deleteAll();
+    //eventRepository.deleteAll();
 
     try {
       List<Events> eventsList = eventService.fetchAll();
 
       for(Events events : eventsList) {
-        eventRepository.save(events);
+        //eventRepository.save(events);
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
