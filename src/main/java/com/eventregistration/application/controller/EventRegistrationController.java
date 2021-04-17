@@ -20,18 +20,12 @@ public class EventRegistrationController {
 
 
   @Autowired
-  EventRepository eventRepository;
-
-  @Autowired
   ReviewRepository reviewRepository;
 
   @GetMapping(value = "/hello")
   public String helloWorld() {
     return "HelloWord";
   }
-
-  @GetMapping(value = "/api/events/all")
-  public List<Events> allEvent() { return (List<Events>) eventRepository.findAll(); }
 
   @GetMapping(value = "/api/review/all")
   public List<Reviews> allReview() { return (List<Reviews>) reviewRepository.findAll(); }
