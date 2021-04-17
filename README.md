@@ -94,3 +94,16 @@ Gender Portable Enum: which contained all the possible gender for customer
 6. CustomerListForAEvent
 
 
+## Project Requirement
+```
+1. Java 13
+2. Maven 3.8.1 or up
+```
+
+### Instruction to Run Application
+```
+1. Run Spring Application via running Application file
+2. Note: No SQL Server need as SQL Server is install on AWS RDS (MYSQL COMMUNITY 8.0.23)
+```
+
+
