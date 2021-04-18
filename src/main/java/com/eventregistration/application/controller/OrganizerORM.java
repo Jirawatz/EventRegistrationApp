@@ -11,28 +11,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/organizer")
+@RequestMapping("/organizer/api")
 public class OrganizerORM {
 
   @Autowired
   OrganizerRepository organizerRepository;
 
-  @GetMapping(value = "/api/all")
+  @GetMapping(value = "/all")
   public List<Organizer> allOrganizer() {
     return (List<Organizer>) organizerRepository.findAll();
   }
 
-  @GetMapping(value = "/api/find/{id}")
+  @GetMapping(value = "/find/{id}")
   public Organizer findById(@PathVariable int id) {
     return organizerRepository.findOrganizerById(id);
   }
 
-  @GetMapping(value = "/api/create")
+  @GetMapping(value = "/create")
   public Organizer createOrganizer(@RequestBody Organizer organizer) {
     return organizerRepository.save(organizer);
   }
 
-  @GetMapping(value = "/api/update/{orgid}")
+  @GetMapping(value = "/update/{orgid}")
   public Organizer updateOrganizer(@PathVariable int orgid, @RequestBody Organizer organizer) {
     Organizer currentOrganizer = organizerRepository.findOrganizerById(orgid);
     currentOrganizer.setFirstName(organizer.getFirstName());
@@ -46,7 +46,7 @@ public class OrganizerORM {
     return organizerRepository.save(currentOrganizer);
   }
 
-  @GetMapping(value = "api/delete/{orgid}")
+  @GetMapping(value = "/delete/{orgid}")
   public void deleteOrganizer(@PathVariable int orgid) {
     organizerRepository.deleteById(orgid);
   }

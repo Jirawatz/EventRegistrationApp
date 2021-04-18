@@ -4,34 +4,39 @@ import com.eventregistration.application.model.Events;
 import com.eventregistration.application.repository.EventRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/event")
+@RequestMapping("/event/api")
+@CrossOrigin(origins = "*")
 public class EventORM {
 
   @Autowired
   EventRepository eventRepository;
 
-  @GetMapping(value = "/api/all")
+  @GetMapping(value = "/all")
   public List<Events> allEvent() { return (List<Events>) eventRepository.findAll(); }
 
-  @GetMapping(value = "/api/find/{id}")
-  public Events findById(@PathVariable int id) {
+  @GetMapping(value = "/find/{id}")
+  public Events findById(@PathVariable("id") int id) {
     return eventRepository.findEventById(id);
   }
 
-  @GetMapping(value = "/api/create")
+  @PostMapping(value = "/create")
   public Events createEvent(@RequestBody Events events) {
     return eventRepository.save(events);
   }
 
-  @GetMapping(value = "/api/update/{eventid}")
-  public Events updateEvent(@PathVariable int eventid, @RequestBody Events events) {
+  @PutMapping(value = "/update/{eventid}")
+  public Events updateEvent(@PathVariable("eventid") int eventid, @RequestBody Events events) {
     Events currentEvent = eventRepository.findEventById(eventid);
     currentEvent.setName(events.getName());
     currentEvent.setType(events.getType());
@@ -42,9 +47,14 @@ public class EventORM {
     return eventRepository.save(currentEvent);
   }
 
-  @GetMapping(value = "/api/delete/{eventid}")
-  public void deleteEvent(@PathVariable int eventid) {
+  @DeleteMapping(value = "/delete/{eventid}")
+  public void deleteEvent(@PathVariable("eventid") int eventid) {
     eventRepository.deleteById(eventid);
+  }
+
+  @GetMapping(value = "/name/{text}")
+  public List<Events> findEventByName(@PathVariable("text") String text) {
+    return eventRepository.findEventByName(text.toLowerCase());
   }
 
 }

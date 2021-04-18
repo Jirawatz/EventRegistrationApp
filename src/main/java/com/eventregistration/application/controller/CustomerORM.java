@@ -11,28 +11,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/customer/api")
 public class CustomerORM {
 
   @Autowired
   CustomerRepository customerRepository;
 
-  @GetMapping(value = "/api/all")
+  @GetMapping(value = "/all")
   public List<Customer> allCustomer() {
     return (List<Customer>) customerRepository.findAll();
   }
 
-  @GetMapping(value = "/api/find/{id}")
+  @GetMapping(value = "/find/{id}")
   public Customer findById(@PathVariable("id") int id) {
     return customerRepository.findCustomerById(id);
   }
 
-  @GetMapping(value = "/api/create")
+  @GetMapping(value = "/create")
   public Customer createCustomer(@RequestBody Customer customer) {
     return customerRepository.save(customer);
   }
 
-  @GetMapping(value = "/api/update/{cusid}")
+  @GetMapping(value = "/update/{cusid}")
   public Customer updateCustomer(@PathVariable int custid, @RequestBody Customer customer) {
     Customer currentCustomer = customerRepository.findCustomerById(custid);
     currentCustomer.setFirstName(customer.getFirstName());
@@ -46,7 +46,7 @@ public class CustomerORM {
     return customerRepository.save(currentCustomer);
   }
 
-  @GetMapping(value ="api/delete/{custid}")
+  @GetMapping(value ="/delete/{custid}")
   public void deleteCustomer(@PathVariable int custid) {
     customerRepository.deleteById(custid);
   }
