@@ -2,6 +2,7 @@ package com.eventregistration.application.controller;
 
 import com.eventregistration.application.model.Events;
 import com.eventregistration.application.repository.EventRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -47,9 +49,10 @@ public class EventORM {
     return eventRepository.save(currentEvent);
   }
 
-  @DeleteMapping(value = "/delete/{eventid}")
-  public void deleteEvent(@PathVariable("eventid") int eventid) {
-    eventRepository.deleteById(eventid);
+  @GetMapping("/delete/{delete}")
+  public List<Events> deleteEvent(@PathVariable("delete") int delete) {
+    eventRepository.deleteById(delete);
+    return new ArrayList<Events>();
   }
 
   @GetMapping(value = "/name/{text}")

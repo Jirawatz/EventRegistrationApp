@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EventRepository extends CrudRepository<Events,Integer> {
 
-  @Query(value = "SELECT * FROM events WHERE events.id:=id", nativeQuery = true)
+  @Query(value = "SELECT * FROM events WHERE events.eventid = :id", nativeQuery = true)
   public Events findEventById(int id);
 
   @Query(value = "SELECT * FROM events WHERE lower(events.name) LIKE %:text%", nativeQuery = true)

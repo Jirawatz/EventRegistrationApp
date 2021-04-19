@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css'
 import { Grid } from 'semantic-ui-react'
 import EventsList from './component/EventsList'
 import Home from './component/Home'
+import EventUpdater from './component/EventEditor'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 class App extends Component {
@@ -50,6 +51,9 @@ class App extends Component {
                   <Route exact path="/event">
                     <EventsList/>
                   </Route>
+                  <Route
+                      path="/event/find/:id"
+                      render={(props) => <EventUpdater {...props}/>}/>
                 </Switch>
               </Grid.Column>
             </Grid.Row>

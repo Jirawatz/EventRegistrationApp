@@ -14,7 +14,7 @@ class EventsService {
     return http.post("/event/api/create", event);
   }
 
-  uodate(id, event) {
+  update(id, event) {
     return http.put(`/event/api/update/${id}`, event);
   }
 
