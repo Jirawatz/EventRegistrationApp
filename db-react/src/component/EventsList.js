@@ -23,7 +23,12 @@ class EventsList extends Component {
 
   componentDidMount() {
     this.retrieveEvents();
-    console.log("TEST");
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      this.retrieveEvents()
+    }
   }
 
   onChangeSearchTitle(e) {
@@ -136,8 +141,7 @@ class EventsList extends Component {
                         }
                         onClick={() => this.setActiveEvent(event, index)}
                         key={index}
-                    >
-                      {event.name}
+                    ><h4>{event.name}  {event.type}</h4><p>{event.startdate} - {event.enddate}</p>
                     </li>
                 ))}
               </div>

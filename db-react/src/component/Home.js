@@ -44,7 +44,8 @@ class Home extends Component {
                       as={Link} to = "/event">Check Them Out</Button>
                   <Button
                       basic color='black'
-                      size='huge'>Looking to Schedule an Event?
+                      size='huge'
+                      as={Link} to = "/event/create">Looking to Schedule an Event?
                   </Button>
                 </Grid.Column>
               </Grid.Row>

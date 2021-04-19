@@ -9,7 +9,7 @@ const options = [
   { key: 'Concert', text: 'Concert', value: 'Concert' },
 ]
 
-class EventEditor extends Component {
+class EventCreator extends Component {
   constructor(props) {
     super(props);
     this.onChangeName = this.onChangeName.bind(this);
@@ -19,7 +19,6 @@ class EventEditor extends Component {
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeFee = this.onChangeFee.bind(this);
     this.saveEvent = this.saveEvent.bind(this);
-    this.removeEvent = this.removeEvent.bind(this);
     this.getEvent = this.getEvent.bind(this);
 
     this.state = {
@@ -35,10 +34,6 @@ class EventEditor extends Component {
     };
   }
 
-  componentDidMount() {
-    console.log(this.props.match.params.id);
-    this.getEvent(this.props.match.params.id);
-  }
 
   onChangeName(e) {
     console.log(e.target.value);
@@ -70,18 +65,18 @@ class EventEditor extends Component {
   }
 
   onChangeStartDate(e) {
-      console.log(e.target.value);
-      const startdate = e.target.value
+    console.log(e.target.value);
+    const startdate = e.target.value
 
-      this.setState(function(prevState) {
-        return {
-          currentEvent : {
-            ...prevState.currentEvent,
-            startdate : startdate
-          }
-        };
-      });
-    }
+    this.setState(function(prevState) {
+      return {
+        currentEvent : {
+          ...prevState.currentEvent,
+          startdate : startdate
+        }
+      };
+    });
+  }
 
   onChangeEndDate(e) {
     console.log(e.target.value);
@@ -137,7 +132,7 @@ class EventEditor extends Component {
       fee: this.state.currentEvent.fee
     };
 
-    EventsService.update(this.state.currentEvent.eventid, updatedEvent)
+    EventsService.create(updatedEvent)
     .then(response => {
       this.setState(prevState => ({
         currentEvent: {
@@ -164,98 +159,75 @@ class EventEditor extends Component {
     });
   }
 
-  removeEvent() {
-    console.log("Delete is Clicked");
-    EventsService.delete(this.state.currentEvent.eventid)
-    .then(response => {
-      console.log(response.data);
-      //this.props.history.push('/event')
-    })
-    .catch(e => {
-      console.log(e);
-    });
-  }
 
   render() {
     const { currentEvent } = this.state;
 
-    return (<div>
-      {currentEvent ? (
-          <div className="edit-form">
-            <Header as='h2'>Event</Header>
-            <Form>
-              <Form.Group widths='equal'>
-                <Form.Input
-                    label="Event Name"
-                    type="text"
-                    id="title"
-                    value={currentEvent.name}
-                    onChange={(e) => this.onChangeName(e)}
-                />
-                <Form.Select
-                    fluid
-                    label='Type'
-                    options={options}
-                    value = {currentEvent.type}
-                    placeholder='Type of Expo'
-                    onChange = {(e, {value}) => this.onChangeType(value)}
-                />
+    return (
+        <div>
+              <div className="edit-form">
+                <Header as='h2'>Event</Header>
+                <Form>
+                  <Form.Group widths='equal'>
+                    <Form.Input
+                        label="Event Name"
+                        type="text"
+                        id="title"
+                        value={currentEvent.name}
+                        onChange={(e) => this.onChangeName(e)}
+                    />
+                    <Form.Select
+                        fluid
+                        label='Type'
+                        options={options}
+                        value = {currentEvent.type}
+                        placeholder='Type of Expo'
+                        onChange = {(e, {value}) => this.onChangeType(value)}
+                    />
 
-            </Form.Group>
-              <Form.Group widths='equal'>
-                <Form.Input
-                    fluid
-                    type="date"
-                    label='Start Date'
-                    value = {currentEvent.startdate}
-                    onChange = {(e) => this.onChangeStartDate(e)}
-                />
-                <Form.Input
-                    fluid
-                    type="date"
-                    label='End Date'
-                    value = {currentEvent.enddate}
-                    onChange = {(e) => this.onChangeEndDate(e)}
-                />
-              </Form.Group>
-              <Form.TextArea
-                  fluid
-                  label='Description'
-                  placeholder='Tell us more about you...'
-                  value = {currentEvent.description}
-                  onChange = {(e) => this.onChangeDescription(e)}
-              />
-              <Form.Input
-                  fluid
-                  type = "number"
-                  label='Fee'
-                  placeholder='Fee to Attend Event'
-                  value = {currentEvent.fee}
-                  onChange = {(e) => this.onChangeFee(e)}
-              />
-              <Form.Group>
-              <Button
-                  as={Link} to = "/event"
-                  onClick={() => this.saveEvent()}
-              >Submit</Button>
-                <Link to="/">
-              <Button
-                  onClick={() => this.removeEvent() && this.forceUpdate()}
-              >Delete</Button>
-                </Link>
-              </Form.Group>
-            </Form>
-          </div>
-      ) : (
-          <div>
-            <br />
-            <p>Please click on a Tutorial...</p>
-          </div>
-      )}
-    </div>
+                  </Form.Group>
+                  <Form.Group widths='equal'>
+                    <Form.Input
+                        fluid
+                        type="date"
+                        label='Start Date'
+                        value = {currentEvent.startdate}
+                        onChange = {(e) => this.onChangeStartDate(e)}
+                    />
+                    <Form.Input
+                        fluid
+                        type="date"
+                        label='End Date'
+                        value = {currentEvent.enddate}
+                        onChange = {(e) => this.onChangeEndDate(e)}
+                    />
+                  </Form.Group>
+                  <Form.TextArea
+                      fluid
+                      label='Description'
+                      placeholder='Tell us more about you...'
+                      value = {currentEvent.description}
+                      onChange = {(e) => this.onChangeDescription(e)}
+                  />
+                  <Form.Input
+                      fluid
+                      type = "number"
+                      label='Fee'
+                      placeholder='Fee to Attend Event'
+                      value = {currentEvent.fee}
+                      onChange = {(e) => this.onChangeFee(e)}
+                  />
+                  <Form.Group>
+                    <Button
+                        onClick={() => this.saveEvent()}
+                    >Create Event</Button>
+                  </Form.Group>
+                </Form>
+              </div>
+        </div>
     );
   }
 
 }
 
-export default EventEditor;
+export default EventCreator;

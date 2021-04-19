@@ -7,6 +7,7 @@ import EventsList from './component/EventsList'
 import Home from './component/Home'
 import EventUpdater from './component/EventEditor'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import EventCreator from "./component/EventCreator";
 
 class App extends Component {
   render() {
@@ -48,12 +49,14 @@ class App extends Component {
                   <Route exact path="/">
                     <Home/>
                   </Route>
-                  <Route exact path="/event">
-                    <EventsList/>
-                  </Route>
+                  <Route exact path="/event"
+                          render={(props) => <EventsList {...props}/>}/>
                   <Route
                       path="/event/find/:id"
                       render={(props) => <EventUpdater {...props}/>}/>
+                  <Route
+                      path="/event/create"
+                      render={(props) => <EventCreator {...props}/>}/>
                 </Switch>
               </Grid.Column>
             </Grid.Row>

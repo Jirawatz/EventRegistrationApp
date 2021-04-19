@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/event/api")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class EventORM {
 
   @Autowired
@@ -49,10 +49,9 @@ public class EventORM {
     return eventRepository.save(currentEvent);
   }
 
-  @GetMapping("/delete/{delete}")
-  public List<Events> deleteEvent(@PathVariable("delete") int delete) {
+  @DeleteMapping("/delete/{delete}")
+  public void deleteEvent(@PathVariable("delete") int delete) {
     eventRepository.deleteById(delete);
-    return new ArrayList<Events>();
   }
 
   @GetMapping(value = "/name/{text}")
