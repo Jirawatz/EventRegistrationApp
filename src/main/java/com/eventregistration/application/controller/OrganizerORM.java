@@ -4,14 +4,19 @@ import com.eventregistration.application.model.Organizer;
 import com.eventregistration.application.repository.OrganizerRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/organizer/api")
+@CrossOrigin(origins = "*")
 public class OrganizerORM {
 
   @Autowired
@@ -27,12 +32,12 @@ public class OrganizerORM {
     return organizerRepository.findOrganizerById(id);
   }
 
-  @GetMapping(value = "/create")
+  @PostMapping(value = "/create")
   public Organizer createOrganizer(@RequestBody Organizer organizer) {
     return organizerRepository.save(organizer);
   }
 
-  @GetMapping(value = "/update/{orgid}")
+  @PutMapping(value = "/update/{orgid}")
   public Organizer updateOrganizer(@PathVariable int orgid, @RequestBody Organizer organizer) {
     Organizer currentOrganizer = organizerRepository.findOrganizerById(orgid);
     currentOrganizer.setFirstName(organizer.getFirstName());
@@ -46,7 +51,7 @@ public class OrganizerORM {
     return organizerRepository.save(currentOrganizer);
   }
 
-  @GetMapping(value = "/delete/{orgid}")
+  @DeleteMapping(value = "/delete/{orgid}")
   public void deleteOrganizer(@PathVariable int orgid) {
     organizerRepository.deleteById(orgid);
   }

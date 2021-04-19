@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import EventsService from "../service/EventsService";
 import { Link } from "react-router-dom";
-import { Input, Button, Grid } from 'semantic-ui-react'
+import {Input, Button, Grid, Header} from 'semantic-ui-react'
 
-export default class EventsList extends Component {
+class EventsList extends Component {
   constructor(props) {
     super(props);
     this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
@@ -90,6 +90,13 @@ export default class EventsList extends Component {
         <Grid container style={{ padding: '0em 0em' }}>
           <Grid.Row>
             <Grid.Column>
+              <Header as='h1' dividing>
+                Finding List of Events
+              </Header>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row>
+            <Grid.Column>
               <Input
                 fluid
                 type='text'
@@ -108,7 +115,10 @@ export default class EventsList extends Component {
                   onClick={( ) => this.searchTitle()}>
                 Search
               </Button>
-              <Button as='a' tabIndex='0'>
+              <Button
+                  as='a'
+                  tabIndex='0'
+                  onClick={() => this.refreshList()}>
                 Reset
               </Button>
             </Grid.Column>
@@ -149,7 +159,7 @@ export default class EventsList extends Component {
                         </label>{" "}
                         {currentEvent.description}
                       </div>
-
+                      <div className= "mt-2">
                       <Button
                           as={Link} to = {"/event/find/" + currentEvent.eventid}
                       >
@@ -160,6 +170,7 @@ export default class EventsList extends Component {
                       >
                         Register
                       </Button>
+                      </div>
                     </div>
                 ) : (
                     <div>
@@ -176,3 +187,5 @@ export default class EventsList extends Component {
 
 
 }
+
+export default EventsList;

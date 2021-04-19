@@ -4,14 +4,19 @@ import com.eventregistration.application.model.Customer;
 import com.eventregistration.application.repository.CustomerRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/customer/api")
+@CrossOrigin(origins = "*")
 public class CustomerORM {
 
   @Autowired
@@ -27,12 +32,12 @@ public class CustomerORM {
     return customerRepository.findCustomerById(id);
   }
 
-  @GetMapping(value = "/create")
+  @PostMapping(value = "/create")
   public Customer createCustomer(@RequestBody Customer customer) {
     return customerRepository.save(customer);
   }
 
-  @GetMapping(value = "/update/{cusid}")
+  @PutMapping(value = "/update/{cusid}")
   public Customer updateCustomer(@PathVariable int custid, @RequestBody Customer customer) {
     Customer currentCustomer = customerRepository.findCustomerById(custid);
     currentCustomer.setFirstName(customer.getFirstName());
@@ -46,7 +51,7 @@ public class CustomerORM {
     return customerRepository.save(currentCustomer);
   }
 
-  @GetMapping(value ="/delete/{custid}")
+  @DeleteMapping(value ="/delete/{custid}")
   public void deleteCustomer(@PathVariable int custid) {
     customerRepository.deleteById(custid);
   }
