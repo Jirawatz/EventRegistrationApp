@@ -3,6 +3,7 @@ package com.eventregistration.application.controller;
 import com.eventregistration.application.model.Reviews;
 import com.eventregistration.application.repository.ReviewRepository;
 import java.util.List;
+import javax.persistence.criteria.CriteriaBuilder.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,6 +45,11 @@ public class ReviewORM {
   @DeleteMapping(value = "/delete/{revid}")
   public void removeReview(@PathVariable("revid") Integer revid) {
     reviewRepository.deleteById(revid);
+  }
+
+  @GetMapping(value = "/find/{id}")
+  public Reviews findReviewById(@PathVariable("id") Integer id) {
+    return  reviewRepository.findReviewsById(id);
   }
 
 }

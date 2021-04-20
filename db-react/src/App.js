@@ -14,6 +14,7 @@ import CustomerCreator from "./component/CustomerCreator";
 import OrganizerList from "./component/OrganizerList";
 import OrganizerUpdate from "./component/OrganizerEditor";
 import OrganizerCreator from "./component/OrganizerCreator";
+import ReviewList from "./component/ReviewList";
 
 class App extends Component {
   render() {
@@ -65,6 +66,9 @@ class App extends Component {
                   <Route
                       path="/organizer/find/:id"
                       render={(props) => <OrganizerUpdate {...props}/>}/>
+                  <Route
+                      path="/review/event/:id"
+                      render={(props) => <ReviewList {...props}/>}/>
                   <Route
                       path="/event/create"
                       render={(props) => <EventCreator {...props}/>}/>

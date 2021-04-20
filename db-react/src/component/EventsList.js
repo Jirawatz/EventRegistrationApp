@@ -179,7 +179,7 @@ class EventsList extends Component {
                       </Button>
                         <Button
                             color='yellow'
-                            as={Link} to = {"/review/" + currentEvent.eventid}
+                            as={Link} to = {"/review/event/" + currentEvent.eventid}
                         >
                           <Icon name='lightbulb' />
                           Read Reviews
