@@ -28,7 +28,7 @@ public class OrganizerORM {
   }
 
   @GetMapping(value = "/find/{id}")
-  public Organizer findById(@PathVariable int id) {
+  public Organizer findById(@PathVariable("id") int id) {
     return organizerRepository.findOrganizerById(id);
   }
 
@@ -38,7 +38,7 @@ public class OrganizerORM {
   }
 
   @PutMapping(value = "/update/{orgid}")
-  public Organizer updateOrganizer(@PathVariable int orgid, @RequestBody Organizer organizer) {
+  public Organizer updateOrganizer(@PathVariable("orgid") int orgid, @RequestBody Organizer organizer) {
     Organizer currentOrganizer = organizerRepository.findOrganizerById(orgid);
     currentOrganizer.setFirstName(organizer.getFirstName());
     currentOrganizer.setLastName(organizer.getLastName());
@@ -52,7 +52,12 @@ public class OrganizerORM {
   }
 
   @DeleteMapping(value = "/delete/{orgid}")
-  public void deleteOrganizer(@PathVariable int orgid) {
+  public void deleteOrganizer(@PathVariable("orgid") int orgid) {
     organizerRepository.deleteById(orgid);
+  }
+
+  @GetMapping(value = "/name/{text}")
+  public List<Organizer> findByName(@PathVariable("text") String text) {
+    return organizerRepository.findOrganizerByName(text);
   }
 }

@@ -11,6 +11,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import EventCreator from "./component/EventCreator";
 import CustomerList from "./component/CustomerList";
 import CustomerCreator from "./component/CustomerCreator";
+import OrganizerList from "./component/OrganizerList";
 
 class App extends Component {
   render() {
@@ -56,6 +57,8 @@ class App extends Component {
                           render={(props) => <EventsList {...props}/>}/>
                   <Route exact path="/customer"
                          render={(props) => <CustomerList {...props}/>}/>
+                  <Route exact path="/organizer"
+                         render={(props) => <OrganizerList {...props}/>}/>
                   <Route
                       path="/event/find/:id"
                       render={(props) => <EventUpdater {...props}/>}/>
