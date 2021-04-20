@@ -12,6 +12,8 @@ import EventCreator from "./component/EventCreator";
 import CustomerList from "./component/CustomerList";
 import CustomerCreator from "./component/CustomerCreator";
 import OrganizerList from "./component/OrganizerList";
+import OrganizerUpdate from "./component/OrganizerEditor";
+import OrganizerCreator from "./component/OrganizerCreator";
 
 class App extends Component {
   render() {
@@ -38,11 +40,6 @@ class App extends Component {
                   Organizer
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to={"/review"} className="nav-link">
-                  Review
-                </Link>
-              </li>
             </div>
           </nav>
 
@@ -66,11 +63,17 @@ class App extends Component {
                       path="/customer/find/:id"
                       render={(props) => <CustomerUpdate {...props}/>}/>
                   <Route
+                      path="/organizer/find/:id"
+                      render={(props) => <OrganizerUpdate {...props}/>}/>
+                  <Route
                       path="/event/create"
                       render={(props) => <EventCreator {...props}/>}/>
                   <Route
                       path="/customer/create"
                       render={(props) => <CustomerCreator {...props}/>}/>
+                  <Route
+                      path="/organizer/create"
+                      render={(props) => <OrganizerCreator {...props}/>}/>
                 </Switch>
               </Grid.Column>
             </Grid.Row>

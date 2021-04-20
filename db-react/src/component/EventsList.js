@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import EventsService from "../service/EventsService";
 import { Link } from "react-router-dom";
-import {Input, Button, Grid, Header} from 'semantic-ui-react'
+import {Input, Button, Grid, Header, Icon} from 'semantic-ui-react'
 
 class EventsList extends Component {
   constructor(props) {
@@ -166,15 +166,24 @@ class EventsList extends Component {
                       </div>
                       <div className= "mt-2">
                       <Button
+                          primary
                           as={Link} to = {"/event/find/" + currentEvent.eventid}
                       >
                         Update
                       </Button>
                       <Button
+                          color='green'
                           as={Link} to = {"/register/find/" + currentEvent.eventid}
                       >
                         Register
                       </Button>
+                        <Button
+                            color='yellow'
+                            as={Link} to = {"/review/" + currentEvent.eventid}
+                        >
+                          <Icon name='lightbulb' />
+                          Read Reviews
+                        </Button>
                       </div>
                     </div>
                 ) : (

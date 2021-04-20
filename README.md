@@ -88,7 +88,7 @@ Gender Portable Enum: which contained all the possible gender for customer
 ### Description of the User Interface
 1. EventEditor
 2. CustomerEditor
-3. OrganizerEditor
+3. OrganizerEditor.js
 4. EventList
 5. OrganizerListForAEvent
 6. CustomerListForAEvent
