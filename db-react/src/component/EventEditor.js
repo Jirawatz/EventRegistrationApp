@@ -144,6 +144,7 @@ class EventEditor extends Component {
           ...prevState.currentEvent
         }
       }));
+      this.props.history.push('/event')
       console.log(response.data);
     })
     .catch(e => {
@@ -169,7 +170,7 @@ class EventEditor extends Component {
     EventsService.delete(this.state.currentEvent.eventid)
     .then(response => {
       console.log(response.data);
-      //this.props.history.push('/event')
+      this.props.history.push('/event')
     })
     .catch(e => {
       console.log(e);
@@ -235,21 +236,20 @@ class EventEditor extends Component {
               />
               <Form.Group>
               <Button
-                  as={Link} to = "/event"
+                  as={Link} to = "/"
                   onClick={() => this.saveEvent()}
               >Submit</Button>
-                <Link to="/">
               <Button
-                  onClick={() => this.removeEvent() && this.forceUpdate()}
+                  as={Link} to = "/"
+                  onClick={() => this.removeEvent()}
               >Delete</Button>
-                </Link>
               </Form.Group>
             </Form>
           </div>
       ) : (
           <div>
             <br />
-            <p>Please click on a Tutorial...</p>
+            <p>Please click on an Event...</p>
           </div>
       )}
     </div>

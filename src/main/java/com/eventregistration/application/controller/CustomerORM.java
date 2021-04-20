@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/customer/api")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CustomerORM {
 
   @Autowired
@@ -38,7 +38,7 @@ public class CustomerORM {
   }
 
   @PutMapping(value = "/update/{cusid}")
-  public Customer updateCustomer(@PathVariable int custid, @RequestBody Customer customer) {
+  public Customer updateCustomer(@PathVariable("cusid") int custid, @RequestBody Customer customer) {
     Customer currentCustomer = customerRepository.findCustomerById(custid);
     currentCustomer.setFirstName(customer.getFirstName());
     currentCustomer.setLastName(customer.getLastName());
@@ -52,8 +52,13 @@ public class CustomerORM {
   }
 
   @DeleteMapping(value ="/delete/{custid}")
-  public void deleteCustomer(@PathVariable int custid) {
+  public void deleteCustomer(@PathVariable("custid") int custid) {
     customerRepository.deleteById(custid);
+  }
+
+  @GetMapping(value = "/name/{custname}")
+  public List<Customer> findCustomerByName(@PathVariable("custname") String custname) {
+    return customerRepository.findCustomerByName(custname);
   }
 
 }
