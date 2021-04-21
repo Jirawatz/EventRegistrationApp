@@ -41,14 +41,7 @@ public class ReviewORM {
 
   @PostMapping(value = "/create")
   public Reviews createReview(@RequestBody Reviews reviews) {
-    Customer customer = customerRepository.findCustomerById(reviews.getCustomer().getId());
-    Events event = eventRepository.findEventById(reviews.getEvent().getEventid());
-    Reviews newReview = new Reviews();
-    newReview.setComments(reviews.getComments());
-    newReview.setScore(reviews.getScore());
-    newReview.setCustomer(customer);
-    newReview.setEvent(event);
-    return reviewRepository.save(newReview);
+    return reviewRepository.save(reviews);
   }
 
   @PutMapping(value = "/update/{revid}")
