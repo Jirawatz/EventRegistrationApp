@@ -96,8 +96,9 @@ Gender Portable Enum: which contained all the possible gender for customer
 
 ## Project Requirement
 ```
-1. Java 13
+1. Java 11+
 2. Maven 3.8.1 or up
+3. NodeJs and NPM
 ```
 
 ### Instruction to Run Application
