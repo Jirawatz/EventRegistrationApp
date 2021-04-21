@@ -98,7 +98,8 @@ Gender Portable Enum: which contained all the possible gender for customer
 ```
 1. Java 11+
 2. Maven 3.8.1 or up
-3. NodeJs and NPM
+3. NodeJs (v12.18.1)
+4. NPM (v7.8.0)
 ```
 
 ### Instruction to Run Application
