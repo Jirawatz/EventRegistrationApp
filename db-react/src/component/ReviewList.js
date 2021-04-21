@@ -41,6 +41,13 @@ class ReviewList extends Component {
     this.retreiveCustomer();
   }
 
+  //TODO
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if(prevState.reviews !== this.state.reviews){
+      console.log("State Updated");
+    }
+  }
+
   retrieveReview(id) {
     ReviewService.getAllByEventId(id)
     .then(response => {
@@ -69,10 +76,11 @@ class ReviewList extends Component {
   }
 
   retrieveCustomerByID(e) {
+    console.log(e);
     CustomerService.get(e)
     .then(response => {
       this.setState({
-        currentCustomer: response.data
+        currentUser: response.data
       });
       console.log(response.data);
     })
@@ -95,20 +103,21 @@ class ReviewList extends Component {
   }
 
   onChangeComment(e) {
-    console.log(e.target.value);
+    //console.log(e.target.value);
     const text = e.target.value
     this.setState({comment: text});
   }
 
   onChangeScore(e) {
-    console.log(e);
+    //console.log(e);
     const star = e
     this.setState({score: star});
   }
 
   saveReview() {
-    console.log("Save has been clicked");
-    console.log(this.state.currentEvent);
+    //console.log("Save has been clicked");
+    //console.log(this.state.currentEvent);
+    console.log(this.state.currentCustomer);
     var newReview = {
       reviewid : null,
       comments: this.state.comment,
