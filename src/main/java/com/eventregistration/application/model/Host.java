@@ -13,7 +13,7 @@ public class Host {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int hostid;
+  private Integer hostid;
 
   @ManyToOne
   private Organizer organizer;
@@ -24,11 +24,11 @@ public class Host {
   public Host() {
   }
 
-  public int getHostid() {
+  public Integer getHostid() {
     return hostid;
   }
 
-  public void setHostid(int hostid) {
+  public void setHostid(Integer hostid) {
     this.hostid = hostid;
   }
 

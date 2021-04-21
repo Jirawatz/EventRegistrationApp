@@ -13,7 +13,7 @@ public class Events {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int eventid;
+  private Integer eventid;
   private String name;
   private String type;
   private Date startdate;
@@ -24,11 +24,11 @@ public class Events {
   public Events() {
   }
 
-  public int getEventid() {
+  public Integer getEventid() {
     return eventid;
   }
 
-  public void setEventid(int eventid) {
+  public void setEventid(Integer eventid) {
     this.eventid = eventid;
   }
 

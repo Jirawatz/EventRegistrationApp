@@ -1,6 +1,10 @@
 package com.eventregistration.application.controller;
 
+import com.eventregistration.application.model.Customer;
+import com.eventregistration.application.model.Events;
 import com.eventregistration.application.model.Reviews;
+import com.eventregistration.application.repository.CustomerRepository;
+import com.eventregistration.application.repository.EventRepository;
 import com.eventregistration.application.repository.ReviewRepository;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder.In;
@@ -23,6 +27,12 @@ public class ReviewORM {
   @Autowired
   ReviewRepository reviewRepository;
 
+  @Autowired
+  CustomerRepository customerRepository;
+
+  @Autowired
+  EventRepository eventRepository;
+
 
   @GetMapping(value = "/event/{eventid}")
   public List<Reviews> findAllReviewsByEvent(@PathVariable("eventid") Integer eventid) {
@@ -31,7 +41,14 @@ public class ReviewORM {
 
   @PostMapping(value = "/create")
   public Reviews createReview(@RequestBody Reviews reviews) {
-    return reviewRepository.save(reviews);
+    Customer customer = customerRepository.findCustomerById(reviews.getCustomer().getId());
+    Events event = eventRepository.findEventById(reviews.getEvent().getEventid());
+    Reviews newReview = new Reviews();
+    newReview.setComments(reviews.getComments());
+    newReview.setScore(reviews.getScore());
+    newReview.setCustomer(customer);
+    newReview.setEvent(event);
+    return reviewRepository.save(newReview);
   }
 
   @PutMapping(value = "/update/{revid}")

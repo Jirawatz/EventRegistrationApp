@@ -28,7 +28,7 @@ public class EventORM {
   public List<Events> allEvent() { return (List<Events>) eventRepository.findAll(); }
 
   @GetMapping(value = "/find/{id}")
-  public Events findById(@PathVariable("id") int id) {
+  public Events findById(@PathVariable("id") Integer id) {
     return eventRepository.findEventById(id);
   }
 
@@ -38,7 +38,7 @@ public class EventORM {
   }
 
   @PutMapping(value = "/update/{eventid}")
-  public Events updateEvent(@PathVariable("eventid") int eventid, @RequestBody Events events) {
+  public Events updateEvent(@PathVariable("eventid") Integer eventid, @RequestBody Events events) {
     Events currentEvent = eventRepository.findEventById(eventid);
     currentEvent.setName(events.getName());
     currentEvent.setType(events.getType());
@@ -50,7 +50,7 @@ public class EventORM {
   }
 
   @DeleteMapping("/delete/{delete}")
-  public void deleteEvent(@PathVariable("delete") int delete) {
+  public void deleteEvent(@PathVariable("delete") Integer delete) {
     eventRepository.deleteById(delete);
   }
 

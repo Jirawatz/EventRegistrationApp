@@ -13,7 +13,7 @@ public class Reviews {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int reviewId;
+  private Integer reviewId;
   private Integer score;
   private String comments;
 
@@ -26,11 +26,11 @@ public class Reviews {
   public Reviews() {
   }
 
-  public int getReviewId() {
+  public Integer getReviewId() {
     return reviewId;
   }
 
-  public void setReviewId(int reviewId) {
+  public void setReviewId(Integer reviewId) {
     this.reviewId = reviewId;
   }
 

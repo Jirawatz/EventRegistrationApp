@@ -12,7 +12,7 @@ public class Register {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int registrationid;
+  private Integer registrationid;
 
   @ManyToOne
   private Customer customerid;
@@ -23,11 +23,11 @@ public class Register {
   public Register() {
   }
 
-  public int getRegistrationid() {
+  public Integer getRegistrationid() {
     return registrationid;
   }
 
-  public void setRegistrationid(int registrationid) {
+  public void setRegistrationid(Integer registrationid) {
     this.registrationid = registrationid;
   }
 

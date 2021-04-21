@@ -28,7 +28,7 @@ public class CustomerORM {
   }
 
   @GetMapping(value = "/find/{id}")
-  public Customer findById(@PathVariable("id") int id) {
+  public Customer findById(@PathVariable("id") Integer id) {
     return customerRepository.findCustomerById(id);
   }
 
@@ -38,7 +38,7 @@ public class CustomerORM {
   }
 
   @PutMapping(value = "/update/{cusid}")
-  public Customer updateCustomer(@PathVariable("cusid") int custid, @RequestBody Customer customer) {
+  public Customer updateCustomer(@PathVariable("cusid") Integer custid, @RequestBody Customer customer) {
     Customer currentCustomer = customerRepository.findCustomerById(custid);
     currentCustomer.setFirstName(customer.getFirstName());
     currentCustomer.setLastName(customer.getLastName());
@@ -52,7 +52,7 @@ public class CustomerORM {
   }
 
   @DeleteMapping(value ="/delete/{custid}")
-  public void deleteCustomer(@PathVariable("custid") int custid) {
+  public void deleteCustomer(@PathVariable("custid") Integer custid) {
     customerRepository.deleteById(custid);
   }
 
