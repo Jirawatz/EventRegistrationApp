@@ -133,5 +133,5 @@ mvn spring-boot:run
 Runing Node
 ```
 cd \EventRegistrationApp\db-react\src\
-npm run
+npm start
 ```
