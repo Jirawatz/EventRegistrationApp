@@ -96,14 +96,44 @@ Gender Portable Enum: which contained all the possible gender for customer
 
 ## Project Requirement
 ```
-1. Java 13
+1. Java 11+
 2. Maven 3.8.1 or up
+3. NodeJs (v12.18.1)
+4. NPM (v7.8.0)
 ```
 
 ### Instruction to Run Application
 ```
-1. Run Spring Application via running Application file
-2. Note: No SQL Server need as SQL Server is install on AWS RDS (MYSQL COMMUNITY 8.0.23)
+git clone https://github.com/Jirawatz/EventRegistrationApp
 ```
 
+```
+cd \EventRegistrationApp\db-react\src\
+```
+Installing Node and NPM Dependencies
 
+```
+npm install
+npm install axios
+npm install bootstrap
+npm install react-router-dom
+npm install semantic-ui-react semantic-ui-css
+```
+
+Install Spring Boot Dependencies
+```
+cd \EventRegistrationApp\
+```
+```
+mvn install
+```
+Running Spring boot
+```
+cd \EventRegistrationApp\
+mvn spring-boot:run
+```
+Runing Node
+```
+cd \EventRegistrationApp\db-react\src\
+npm start
+```
