@@ -102,9 +102,11 @@ Gender Portable Enum: which contained all the possible gender for customer
 4. NPM (v7.8.0)
 ```
 #### Download Link
+```
 Java 11: https://www.oracle.com/java/technologies/javase-jdk11-downloads.html
 Maven: https://maven.apache.org/download.cgi
 NodeJs: https://nodejs.org/en/
+```
 
 ### Instruction to Run Application
 ```
