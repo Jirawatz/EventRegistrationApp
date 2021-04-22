@@ -105,7 +105,7 @@ class OrganizerList extends Component {
               <Input
                   fluid
                   type='text'
-                  placeholder='Search Events...'
+                  placeholder='Search Organizer...'
                   value={searchTitle}
                   onChange={(e) => this.onChangeSearchName(e)}
               />

@@ -105,7 +105,7 @@ class CustomerList extends Component {
               <Input
                   fluid
                   type='text'
-                  placeholder='Search Events...'
+                  placeholder='Search Customer...'
                   value={searchTitle}
                   onChange={(e) => this.onChangeSearchName(e)}
               />
