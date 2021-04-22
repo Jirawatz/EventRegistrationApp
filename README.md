@@ -101,6 +101,10 @@ Gender Portable Enum: which contained all the possible gender for customer
 3. NodeJs (v12.18.1)
 4. NPM (v7.8.0)
 ```
+#### Download Link
+Java 11: https://www.oracle.com/java/technologies/javase-jdk11-downloads.html
+Maven: https://maven.apache.org/download.cgi
+NodeJs: https://nodejs.org/en/
 
 ### Instruction to Run Application
 ```
@@ -123,8 +127,6 @@ npm install semantic-ui-react semantic-ui-css
 Install Spring Boot Dependencies
 ```
 cd \EventRegistrationApp\
-```
-```
 mvn install
 ```
 Running Spring boot
