@@ -132,8 +132,10 @@ Running Spring boot
 cd \EventRegistrationApp\
 mvn spring-boot:run
 ```
-Runing Node
+Running React
 ```
 cd \EventRegistrationApp\db-react\src\
 npm start
 ```
+
+open http://localhost:3000 in your browser to intereact with the user interface
