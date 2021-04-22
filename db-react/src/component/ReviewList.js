@@ -22,6 +22,7 @@ class ReviewList extends Component {
     this.onChangeComment = this.onChangeComment.bind(this);
     this.onChangeScore = this.onChangeScore.bind(this);
     this.saveReview = this.saveReview.bind(this);
+    this.refresh = this.refresh.bind(this);
 
     this.state = {
       reviewid : null,
@@ -31,7 +32,8 @@ class ReviewList extends Component {
       comment: "",
       currentUser: null,
       message: "",
-      currentEvent : null
+      currentEvent : null,
+      updated : false
     }
   }
 
@@ -41,10 +43,9 @@ class ReviewList extends Component {
     this.retreiveCustomer();
   }
 
-  //TODO
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if(prevState.reviews !== this.state.reviews){
-      console.log("State Updated");
+    if(this.state.updated){
+      this.refresh();
     }
   }
 
@@ -102,6 +103,18 @@ class ReviewList extends Component {
     });
   }
 
+  refresh() {
+    this.retrieveReview(this.props.match.params.id);
+    this.retrieveEvent(this.props.match.params.id);
+    this.retreiveCustomer();
+    this.setState({
+      comment : "",
+      score : 0,
+      currentUser : null,
+      updated : false
+    });
+  }
+
   onChangeComment(e) {
     //console.log(e.target.value);
     const text = e.target.value
@@ -117,7 +130,7 @@ class ReviewList extends Component {
   saveReview() {
     //console.log("Save has been clicked");
     //console.log(this.state.currentEvent);
-    console.log(this.state.currentCustomer);
+    console.log(this.state.currentUser);
     var newReview = {
       reviewid : null,
       comments: this.state.comment,
@@ -127,11 +140,18 @@ class ReviewList extends Component {
     };
 
     ReviewService.create(newReview)
+    .then(() => {
+      this.setState({
+        updated: true
+      });
+    })
   }
 
-  render() {
-    const {reviews, customers, score, comment, currentUser, message} = this.state;
 
+
+  render() {
+    const {reviews, customers, score, comment} = this.state;
+    console.log("Render" + customers);
     return (
         <div>
           <Header as='h1' dividing>
@@ -161,7 +181,8 @@ class ReviewList extends Component {
                             rating={review.score}
                             clearable
                         />
-                        <Link to={"/review/" + review.reviewId}>
+                        <Link to={"/review/" + review.reviewId + "/event/"
+                        + this.props.match.params.id + "/customer/" + review.customer.id}>
                           <Comment.Action
                               className="ml-2"
                           >Edit</Comment.Action>

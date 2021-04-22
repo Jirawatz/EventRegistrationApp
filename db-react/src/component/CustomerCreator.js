@@ -166,6 +166,7 @@ class CustomerCreator extends Component {
         }
       }));
       console.log(response.data);
+      this.props.history.push('/customer')
     })
     .catch(e => {
       console.log(e);

@@ -140,7 +140,7 @@ class OrganizerCreator extends Component {
       phone : this.state.currentOrganizer.phone
     }
 
-    OrganizerService.create(this.state.currentOrganizer.id, updatedOrganizer)
+    OrganizerService.create(updatedOrganizer)
     .then(response => {
       this.setState(prevState => ({
         currentOrganizer: {
