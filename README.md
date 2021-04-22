@@ -100,6 +100,7 @@ Gender Portable Enum: which contained all the possible gender for customer
 2. Maven 3.8.1 or up
 3. NodeJs (v12.18.1)
 4. NPM (v7.8.0)
+5. Intelij (Recommended)
 ```
 #### Download Link
 ```
@@ -112,7 +113,7 @@ NodeJs: https://nodejs.org/en/
 ```
 git clone https://github.com/Jirawatz/EventRegistrationApp
 ```
-
+Or import via version control in InteliJ and make sure that all maven dependencies installed
 ```
 cd \EventRegistrationApp\db-react\src\
 ```
@@ -120,10 +121,7 @@ Installing Node and NPM Dependencies
 
 ```
 npm install
-npm install axios
-npm install bootstrap
-npm install react-router-dom
-npm install semantic-ui-react semantic-ui-css
+npm install axios bootstrap react-router-dom semantic-ui-react semantic-ui-css
 ```
 
 Install Spring Boot Dependencies
