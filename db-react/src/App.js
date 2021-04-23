@@ -17,6 +17,7 @@ import OrganizerCreator from "./component/OrganizerCreator";
 import ReviewList from "./component/ReviewList";
 import ReviewEditor from "./component/ReviewEditor";
 import RegisterPage from "./component/RegisterPage";
+import HostPage from "./component/HostPage";
 
 class App extends Component {
   render() {
@@ -86,6 +87,9 @@ class App extends Component {
                       <Route
                           path="/customer/:id/register"
                           render={(props) => <RegisterPage{...props}/>}/>
+                    <Route
+                        path="/customer/:id/host"
+                        render={(props) => <HostPage{...props}/>}/>
                 </Switch>
               </Grid.Column>
             </Grid.Row>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import EventsService from "../service/EventsService";
+import HostService from "../service/HostService";
 import {Header, Input, Form, Button} from 'semantic-ui-react';
 import {Link} from "react-router-dom";
 
@@ -23,7 +23,7 @@ class HostPage extends Component {
 
     componentDidMount() {
         console.log(this.props.match.params.id);
-        this.getEvent(this.props.match.params.id);
+        this.getHost(this.props.match.params.id);
     }
 
     onChangeEventId(e) {
@@ -112,16 +112,16 @@ class HostPage extends Component {
                         <Form>
                             <Form.Group widths='equal'>
                                 <Form.Input
-                                    label="Event id"
+                                    label="Event-id"
                                     type="text"
-                                    id= null
+                                    id= "null"
                                     value={currentHost.eventId}
                                     onChange={(e) => this.onChangeEventId(e)}
                                 />
                                 <Form.Input
                                     label="Organizer id"
                                     type="text"
-                                    id= null
+                                    id= "null"
                                     value={currentHost.organizerId}
                                     onChange={(e) => this.onChangeOrganizerId(e)}
                                 />
