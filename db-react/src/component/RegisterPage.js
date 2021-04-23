@@ -324,6 +324,7 @@ class RegisterPage extends Component {
                         <div>
                         <Button
                         primary
+                        as={Link} to = {"/event/" + currentEvent.eventid}
                         onClick={() => this.saveRegister()}
                         >
                           Register
