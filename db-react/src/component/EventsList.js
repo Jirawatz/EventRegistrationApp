@@ -171,12 +171,6 @@ class EventsList extends Component {
                       >
                         Update
                       </Button>
-                      <Button
-                          color='green'
-                          as={Link} to = {"/register/find/" + currentEvent.eventid}
-                      >
-                        Register
-                      </Button>
                         <Button
                             color='yellow'
                             as={Link} to = {"/review/event/" + currentEvent.eventid}

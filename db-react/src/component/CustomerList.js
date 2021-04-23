@@ -182,6 +182,12 @@ class CustomerList extends Component {
                         >
                           Update
                         </Button>
+                        <Button
+                            color='green'
+                            as={Link} to = {"/customer/"+ currentCustomer.id + "/register"}
+                        >
+                          Register
+                        </Button>
                       </div>
                     </div>
                 ) : (
