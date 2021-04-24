@@ -23,6 +23,7 @@ class HostPage extends Component {
     this.retrieveAllOrganizer = this.retrieveAllOrganizer.bind(this);
 
     this.state = {
+      host: null,
       organizers: [],
       currentOrganizer: {
         id: null,
@@ -158,7 +159,7 @@ class HostPage extends Component {
         }
       }));
       console.log(response.data);
-      this.props.history.push('/organizer')
+      this.props.history.push("/organizer/find" + this.state.currentOrganizer.id)
     })
     .catch(e => {
       console.log(e);
@@ -189,12 +190,8 @@ class HostPage extends Component {
 
     HostService.create(updatedHost)
     .then(response => {
-      this.setState(prevState => ({
-        currentHost: {
-          ...prevState.currentHost
-        }
-      }));
-      this.props.history.push('/organizer')
+      this.setState(prevState => ({}));
+      this.props.history.push("/organizer/find/" + this.state.currentOrganizer.id)
       console.log(response.data);
     })
     .catch(e => {
@@ -206,7 +203,7 @@ class HostPage extends Component {
     HostService.get(id)
     .then(response => {
       this.setState({
-        currentHost: response.data
+        host: response.data
       });
       console.log(response.data);
     })

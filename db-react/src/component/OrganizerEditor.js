@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import OrganizerService from "../service/OrganizerService";
-import {Header, Input, Form, Button } from 'semantic-ui-react';
+import {Header, Input, Form, Button, List} from 'semantic-ui-react';
 import {Link} from "react-router-dom";
+import CustomerService from "../service/CustomerService";
 
 class OrganizerEditor extends Component {
   constructor(props) {
@@ -16,6 +17,8 @@ class OrganizerEditor extends Component {
     this.saveOrganizer = this.saveOrganizer.bind(this);
     this.getOrganizer = this.getOrganizer.bind(this);
     this.removeOrganizer = this.removeOrganizer.bind(this);
+    this.retrieveAllEvents = this.retrieveAllEvents.bind(this);
+
 
     this.state = {
       currentOrganizer: {
@@ -37,6 +40,7 @@ class OrganizerEditor extends Component {
   componentDidMount() {
     console.log(this.props.match.params.id);
     this.getOrganizer(this.props.match.params.id);
+    this.retrieveAllEvents(this.props.match.params.id)
   }
 
   onChangeFirstName(e) {
@@ -158,20 +162,33 @@ class OrganizerEditor extends Component {
       console.log(response.data);
       this.props.history.push('/organizer')
     })
-    .catch(e => {
-      console.log(e);
-    });
+        .catch(e => {
+          console.log(e);
+        });
+  }
+
+  retrieveAllEvents(e) {
+    OrganizerService.findHostByOrganizer(e)
+        .then(response => {
+          this.setState({
+            host: response.data
+          });
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
   }
 
   getOrganizer(id) {
     OrganizerService.get(id)
-    .then(response => {
-      this.setState({
-        currentOrganizer : response.data
-      });
-      console.log(response.data);
-    })
-    .catch(e => {
+        .then(response => {
+          this.setState({
+            currentOrganizer: response.data
+          });
+          console.log(response.data);
+        })
+        .catch(e => {
       console.log(e);
     });
   }
@@ -249,14 +266,37 @@ class OrganizerEditor extends Component {
                         onChange={(e) => this.onChangeDOB(e)}
                     />
                   <Button
-                      as={Link} to = "/"
+                      as={Link} to="/"
                       onClick={() => this.saveOrganizer()}
                   >Submit</Button>
                   <Button
-                      as={Link} to = "/"
+                      as={Link} to="/"
                       onClick={() => this.removeOrganizer()}
                   >Delete</Button>
                 </Form>
+                <div className={"mt-5"}>
+                  <h3>Hosted Events</h3>
+                  <List divided relaxed>
+                    {this.state.host.map((reg) => (
+                        <List.Item>
+                          <List.Icon name='calendar' size='large' verticalAlign='middle'/>
+                          <List.Content>
+                            <Link
+                                to={"/host/" + reg.hostid + "/event/" + reg.events.eventid + "/organizer/" + reg.organizer.id}>
+                              <List.Header as='a'>{reg.events.name + " " + reg.events.type}</List.Header>
+                            </Link>
+                            <List.Description
+                                as='a'>{reg.events.startdate + " - " + reg.events.enddate}</List.Description>
+                          </List.Content>
+                        </List.Item>))}
+                  </List>
+                  <Button
+                      color='green'
+                      as={Link} to={"/event/host/" + currentOrganizer.id}
+                  >
+                    Host an Event
+                  </Button>
+                </div>
               </div>
           ) : (
               <div>

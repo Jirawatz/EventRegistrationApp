@@ -26,6 +26,10 @@ class OrganizerService {
     return http.get(`/organizer/api/name/${name}`);
   }
 
+  findHostByOrganizer(id) {
+    return http.get(`/organizer/api/event/host/${id}`);
+  }
+
 }
 
 export default new OrganizerService;

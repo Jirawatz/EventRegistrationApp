@@ -19,6 +19,7 @@ import ReviewEditor from "./component/ReviewEditor";
 import RegisterPage from "./component/RegisterPage";
 import HostPage from "./component/HostPage";
 import RegisterEditor from "./component/RegisterEditor";
+import HostEditor from "./component/HostEditor";
 
 class App extends Component {
   render() {
@@ -94,6 +95,9 @@ class App extends Component {
                   <Route
                       path="/event/host/:id"
                       render={(props) => <HostPage{...props}/>}/>
+                  <Route
+                      path="/host/:hid/event/:eid/organizer/:oid"
+                      render={(props) => <HostEditor{...props}/>}/>
                   />
                 </Switch>
               </Grid.Column>

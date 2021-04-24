@@ -196,9 +196,15 @@ class RegisterEditor extends Component {
             eventid: this.state.currentEvent
         }
 
-        RegisterService.update(this.state.reg.registrationid, newRegister).then(
-            this.props.history.push('/')
-        )
+        RegisterService.update(this.state.reg.registrationid, newRegister)
+            .then(response => {
+                this.setState(prevState => ({}));
+                console.log(response.data);
+                this.props.history.push("/customer/find/" + this.state.currentCustomer.id)
+            })
+            .catch(e => {
+                console.log(e);
+            });
 
     }
 
@@ -255,9 +261,15 @@ class RegisterEditor extends Component {
     }
 
     removeRegister() {
-        RegisterService.delete(this.state.reg.registrationid).then(
-            this.props.history.push('/')
-        )
+        RegisterService.delete(this.state.reg.registrationid)
+            .then(response => {
+                this.setState(prevState => ({}));
+                console.log(response.data);
+                this.props.history.push("/customer/find/" + this.state.currentCustomer.id)
+            })
+            .catch(e => {
+                console.log(e);
+            });
     }
 
     render() {
@@ -350,13 +362,13 @@ class RegisterEditor extends Component {
                                 <div>
                                     <Button
                                         primary
-                                        as={Link} to={"/customer/find/" + currentCustomer.id}
+                                        as={Link} to={"/"}
                                         onClick={() => this.saveRegister()}
                                     >
                                         Update
                                     </Button>
                                     <Button
-                                        as={Link} to={"/customer/find/" + currentCustomer.id}
+                                        as={Link} to={"/"}
                                         onClick={() => this.removeRegister()}
                                     >
                                         Cancel

@@ -182,18 +182,24 @@ class RegisterPage extends Component {
   }
 
   saveRegister() {
-    console.log(this.state.currentCustomer);
-    console.log(this.state.currentEvent);
-    this.saveCustomer();
-    var newRegister = {
-      registrationid: null,
-      customerid: this.state.currentCustomer,
-      eventid: this.state.currentEvent
-    }
+      console.log(this.state.currentCustomer);
+      console.log(this.state.currentEvent);
+      this.saveCustomer();
+      var newRegister = {
+          registrationid: null,
+          customerid: this.state.currentCustomer,
+          eventid: this.state.currentEvent
+      }
 
-    RegisterService.create(newRegister).then(
-        this.props.history.push('/r')
-    )
+      RegisterService.create(newRegister)
+          .then(response => {
+              this.setState(prevState => ({}));
+              console.log(response.data);
+              this.props.history.push("/customer/find/" + this.state.currentCustomer.id)
+          })
+          .catch(e => {
+              console.log(e);
+          });
 
   }
 
@@ -324,18 +330,18 @@ class RegisterPage extends Component {
                           extra={"Entry Fee: $" + currentEvent.fee}
                       />}{currentEvent.name &&
                         <div>
-                          <Button
-                              primary
-                              as={Link} to={"/customer/find/" + currentCustomer.id}
-                              onClick={() => this.saveRegister()}
-                          >
-                            Register
-                          </Button>
-                          <Button
-                              as={Link} to={"/review/event/" + currentEvent.eventid}
-                          >
-                            Read Review
-                          </Button>
+                            <Button
+                                primary
+                                as={Link} to={"/"}
+                                onClick={() => this.saveRegister()}
+                            >
+                                Register
+                            </Button>
+                            <Button
+                                as={Link} to={"/review/event/" + currentEvent.eventid}
+                            >
+                                Read Review
+                            </Button>
                         </div>
                       }
                     </Grid.Column>
