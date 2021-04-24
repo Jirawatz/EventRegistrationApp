@@ -18,17 +18,18 @@ class OrganizerEditor extends Component {
     this.removeOrganizer = this.removeOrganizer.bind(this);
 
     this.state = {
-      currentOrganizer : {
-        id : null,
-        firstName : "",
-        lastName : "",
-        username : "",
-        password : "",
-        email : "",
-        dateOfBirth : "",
-        company : "",
-        phone : ""
-      }
+      currentOrganizer: {
+        id: null,
+        firstName: "",
+        lastName: "",
+        username: "",
+        password: "",
+        email: "",
+        dateOfBirth: "",
+        company: "",
+        phone: ""
+      },
+      host: []
     };
   }
 

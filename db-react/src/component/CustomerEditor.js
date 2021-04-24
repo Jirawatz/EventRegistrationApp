@@ -24,17 +24,18 @@ class CustomerEditor extends Component {
     this.removeCustomer = this.removeCustomer.bind(this);
 
     this.state = {
-      currentCustomer : {
-        id : null,
-        firstName : "",
-        lastName : "",
-        username : "",
-        password : "",
-        email : "",
-        dateOfBirth : "",
-        age : "",
-        gender : ""
-      }
+      currentCustomer: {
+        id: null,
+        firstName: "",
+        lastName: "",
+        username: "",
+        password: "",
+        email: "",
+        dateOfBirth: "",
+        age: "",
+        gender: ""
+      },
+      event: []
     };
   }
 

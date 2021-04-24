@@ -1,6 +1,7 @@
 package com.eventregistration.application.controller;
 
 import com.eventregistration.application.model.Customer;
+import com.eventregistration.application.model.Events;
 import com.eventregistration.application.repository.CustomerRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,7 @@ public class CustomerORM {
     return customerRepository.save(currentCustomer);
   }
 
-  @DeleteMapping(value ="/delete/{custid}")
+  @DeleteMapping(value = "/delete/{custid}")
   public void deleteCustomer(@PathVariable("custid") Integer custid) {
     customerRepository.deleteById(custid);
   }
@@ -59,6 +60,11 @@ public class CustomerORM {
   @GetMapping(value = "/name/{custname}")
   public List<Customer> findCustomerByName(@PathVariable("custname") String custname) {
     return customerRepository.findCustomerByName(custname);
+  }
+
+  @GetMapping(value = "/event/customer/{id}")
+  public List<Events> findEventsByCustomerID(@PathVariable("id") Integer id) {
+    return customerRepository.findEventByCustomerRegister(id);
   }
 
 }
