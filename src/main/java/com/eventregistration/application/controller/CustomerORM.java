@@ -4,7 +4,10 @@ import com.eventregistration.application.model.Customer;
 import com.eventregistration.application.model.Events;
 import com.eventregistration.application.model.Register;
 import com.eventregistration.application.repository.CustomerRepository;
+
 import java.util.List;
+
+import com.eventregistration.application.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,6 +26,9 @@ public class CustomerORM {
 
   @Autowired
   CustomerRepository customerRepository;
+
+  @Autowired
+  EventRepository eventRepository;
 
   @GetMapping(value = "/all")
   public List<Customer> allCustomer() {
@@ -65,7 +71,7 @@ public class CustomerORM {
 
   @GetMapping(value = "/event/customer/{id}")
   public List<Events> findEventsByCustomerID(@PathVariable("id") Integer id) {
-    return customerRepository.findEventByCustomerRegister(id);
+    return eventRepository.findEventByCustomerRegister(id);
   }
 
   @GetMapping(value = "/event/register/{id}")
