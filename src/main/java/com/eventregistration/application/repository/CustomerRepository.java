@@ -16,7 +16,7 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer> {
   @Query(value = "SELECT * FROM customers WHERE CONCAT(customers.first_name, ' ', customers.last_name) LIKE %:text%", nativeQuery = true)
   public List<Customer> findCustomerByName(String text);
 
-  @Query(value = "SELECT events.name, events.type FROM events, customers, register WHERE customers.id = register.customerid_id AND events.eventId = register.eventid_eventid AND customers.id=:custid", nativeQuery = true)
+  @Query(value = "SELECT events.name, events.type FROM events, customers, register WHERE customers.id=register.customerid_id AND events.eventId = register.eventid_eventid AND customerid_id:=custid", nativeQuery = true)
   public List<Events> findEventByCustomerRegister(Integer custid);
 
 }
