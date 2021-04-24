@@ -186,12 +186,14 @@ class RegisterPage extends Component {
     console.log(this.state.currentEvent);
     this.saveCustomer();
     var newRegister = {
-      registrationid : null,
-      customerid : this.state.currentCustomer,
-      eventid : this.state.currentEvent
+      registrationid: null,
+      customerid: this.state.currentCustomer,
+      eventid: this.state.currentEvent
     }
 
-    RegisterService.create(newRegister)
+    RegisterService.create(newRegister).then(
+        this.props.history.push('/r')
+    )
 
   }
 
@@ -322,18 +324,18 @@ class RegisterPage extends Component {
                           extra={"Entry Fee: $" + currentEvent.fee}
                       />}{currentEvent.name &&
                         <div>
-                        <Button
-                        primary
-                        as={Link} to = {"/event/" + currentEvent.eventid}
-                        onClick={() => this.saveRegister()}
-                        >
-                          Register
-                        </Button>
-                      <Button
-                      as={Link} to = {"/review/event/" + currentEvent.eventid}
-                      >
-                      Read Review
-                      </Button>
+                          <Button
+                              primary
+                              as={Link} to={"/customer/find/" + currentCustomer.id}
+                              onClick={() => this.saveRegister()}
+                          >
+                            Register
+                          </Button>
+                          <Button
+                              as={Link} to={"/review/event/" + currentEvent.eventid}
+                          >
+                            Read Review
+                          </Button>
                         </div>
                       }
                     </Grid.Column>

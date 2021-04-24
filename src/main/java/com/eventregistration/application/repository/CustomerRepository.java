@@ -18,10 +18,4 @@ public interface CustomerRepository extends CrudRepository<Customer, Integer> {
   public List<Customer> findCustomerByName(String text);
 
 
-  @Query(value = "SELECT register.registrationId, register.customerid_id, register.eventid_eventid FROM events, customers, register\n"
-      + "WHERE customers.id=register.customerid_id\n"
-      + "AND events.eventId = register.eventid_eventid\n"
-      + "AND customerid_id=:custid", nativeQuery = true)
-  public List<Register> findRegisterByCustomerId(Integer custid);
-
 }

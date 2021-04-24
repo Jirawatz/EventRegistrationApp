@@ -7,7 +7,7 @@ class RegisterService {
   }
 
   get(id) {
-    return http.get(`/register/api/${id}`);
+    return http.get(`/register/api/find/${id}`);
   }
 
   create(register) {

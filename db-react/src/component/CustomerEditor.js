@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CustomerService from "../service/CustomerService";
-import {Header, Input, Form, Button } from 'semantic-ui-react';
+import {Header, List, Form, Button} from 'semantic-ui-react';
 import {Link} from "react-router-dom";
 
 const options = [
@@ -22,6 +22,7 @@ class CustomerEditor extends Component {
     this.saveCustomer = this.saveCustomer.bind(this);
     this.getCustomer = this.getCustomer.bind(this);
     this.removeCustomer = this.removeCustomer.bind(this);
+    this.retrieveAllEvents = this.retrieveAllEvents.bind(this);
 
     this.state = {
       currentCustomer: {
@@ -35,7 +36,7 @@ class CustomerEditor extends Component {
         age: "",
         gender: ""
       },
-      event: []
+      signup: []
     };
   }
 
@@ -43,6 +44,7 @@ class CustomerEditor extends Component {
   componentDidMount() {
     console.log(this.props.match.params.id);
     this.getCustomer(this.props.match.params.id);
+    this.retrieveAllEvents(this.props.match.params.id);
   }
 
   onChangeFirstName(e) {
@@ -196,22 +198,37 @@ class CustomerEditor extends Component {
 
   removeCustomer() {
     CustomerService.delete(this.state.currentCustomer.id)
-    .then(response => {
-      console.log(response.data);
-      this.props.history.push('/customer')
-    })
-    .catch(e => {
-      console.log(e);
-    });
+        .then(response => {
+          console.log(response.data);
+          this.props.history.push('/customer')
+        })
+        .catch(e => {
+          console.log(e);
+        });
   }
 
-  render() {
-    const { currentCustomer } = this.state;
+  retrieveAllEvents(e) {
+    CustomerService.findEventByCustomer(e)
+        .then(response => {
+          this.setState({
+            signup: response.data
+          });
+          console.log(response.data);
+        })
+        .catch(e => {
+          console.log(e);
+        });
+  }
 
+
+  render() {
+    const {currentCustomer} = this.state;
+
+    console.log(this.state.signup);
     return (<div>
-      {currentCustomer ? (
-          <div className="edit-form">
-            <Header as='h2'>Customer</Header>
+          {currentCustomer ? (
+              <div className="edit-form">
+                <Header as='h2'>Customer</Header>
             <Form>
               <Form.Group widths='equal'>
                 <Form.Input
@@ -267,25 +284,51 @@ class CustomerEditor extends Component {
                   onChange = {(e, {value}) => this.onChangeGender(value)}
               />
               <Button
-                  as={Link} to = "/"
+                  as={Link} to="/"
                   onClick={() => this.saveCustomer()}
               >Submit</Button>
               <Button
-                  as={Link} to = "/"
+                  as={Link} to="/"
                   onClick={() => this.removeCustomer()}
               >Delete</Button>
             </Form>
-          </div>
+                <h3>Registered Events</h3>
+                <List divided relaxed>
+                  {this.state.signup.map((reg) => (
+                      <List.Item>
+                        <List.Icon name='calendar' size='large' verticalAlign='middle'/>
+                        <List.Content>
+                          <Link
+                              to={"/register/" + reg.registrationid + "/event/" + reg.eventid.eventid + "/customer/" + reg.customerid.id}>
+                            <List.Header as='a'>{reg.eventid.name + " " + reg.eventid.type}</List.Header>
+                          </Link>
+                          <List.Description
+                              as='a'>{reg.eventid.startdate + " - " + reg.eventid.enddate}</List.Description>
+                        </List.Content>
+                      </List.Item>))}
+                </List>
+                <Button
+                    color='green'
+                    as={Link} to={"/customer/" + currentCustomer.id + "/register"}
+                >
+                  Register an Event
+                </Button>
+              </div>
       ) : (
-          <div>
-            <br />
-            <p>Please click on a Customer...</p>
-          </div>
-      )}
-    </div>
+              <div>
+                <br/>
+                <p>Please click on a Customer...</p>
+              </div>
+          )}
+        </div>
     );
   }
 
 }
+
+/*
+
+
+ */
 
 export default CustomerEditor;

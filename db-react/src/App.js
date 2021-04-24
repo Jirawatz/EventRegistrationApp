@@ -18,6 +18,7 @@ import ReviewList from "./component/ReviewList";
 import ReviewEditor from "./component/ReviewEditor";
 import RegisterPage from "./component/RegisterPage";
 import HostPage from "./component/HostPage";
+import RegisterEditor from "./component/RegisterEditor";
 
 class App extends Component {
   render() {
@@ -84,13 +85,16 @@ class App extends Component {
                   <Route
                       path="/organizer/create"
                       render={(props) => <OrganizerCreator {...props}/>}/>
-                      <Route
-                          path="/customer/:id/register"
-                          render={(props) => <RegisterPage{...props}/>}/>
-                          <Route
-                            path="/event/host/:id"
-                            render={(props) => <HostPage{...props}/>}/>
-                          />
+                  <Route
+                      path="/customer/:id/register"
+                      render={(props) => <RegisterPage{...props}/>}/>
+                  <Route
+                      path="/register/:regid/event/:eid/customer/:cid"
+                      render={(props) => <RegisterEditor{...props}/>}/>
+                  <Route
+                      path="/event/host/:id"
+                      render={(props) => <HostPage{...props}/>}/>
+                  />
                 </Switch>
               </Grid.Column>
             </Grid.Row>

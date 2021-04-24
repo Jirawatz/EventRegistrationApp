@@ -52,9 +52,5 @@ public class RegisterORM {
         registerRepository.deleteById(regid);
     }
 
-    @GetMapping(value = "/name/{customerevent}")
-    public List<Register> findRegisterByCustomerAndEvent(@PathVariable("customerevent") String customerevent) {
-        return registerRepository.findRegisterByCustomerAndEvent(customerevent);
-    }
 
 }

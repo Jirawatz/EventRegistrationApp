@@ -8,6 +8,7 @@ import com.eventregistration.application.repository.CustomerRepository;
 import java.util.List;
 
 import com.eventregistration.application.repository.EventRepository;
+import com.eventregistration.application.repository.RegisterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +30,9 @@ public class CustomerORM {
 
   @Autowired
   EventRepository eventRepository;
+
+  @Autowired
+  RegisterRepository registerRepository;
 
   @GetMapping(value = "/all")
   public List<Customer> allCustomer() {
@@ -76,7 +80,7 @@ public class CustomerORM {
 
   @GetMapping(value = "/event/register/{id}")
   public List<Register> findRegisterByCustomerId(@PathVariable("id") Integer id) {
-    return customerRepository.findRegisterByCustomerId(id);
+    return registerRepository.findRegisterByCustomerId(id);
   }
 
 }
