@@ -1,6 +1,8 @@
 package com.eventregistration.application.controller;
 
+import com.eventregistration.application.model.Host;
 import com.eventregistration.application.model.Organizer;
+import com.eventregistration.application.repository.HostRepository;
 import com.eventregistration.application.repository.OrganizerRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class OrganizerORM {
 
   @Autowired
   OrganizerRepository organizerRepository;
+
+  @Autowired
+  HostRepository hostRepository;
 
   @GetMapping(value = "/all")
   public List<Organizer> allOrganizer() {
@@ -59,5 +64,10 @@ public class OrganizerORM {
   @GetMapping(value = "/name/{text}")
   public List<Organizer> findByName(@PathVariable("text") String text) {
     return organizerRepository.findOrganizerByName(text);
+  }
+
+  @GetMapping(value = "/event/host/{id}")
+  public List<Host> findHostByOrganizerID(@PathVariable("id") Integer id) {
+    return hostRepository.findHostByOrganizerID(id);
   }
 }
