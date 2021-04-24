@@ -2,6 +2,7 @@ package com.eventregistration.application.controller;
 
 import com.eventregistration.application.model.Customer;
 import com.eventregistration.application.model.Events;
+import com.eventregistration.application.model.Register;
 import com.eventregistration.application.repository.CustomerRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,11 @@ public class CustomerORM {
   @GetMapping(value = "/event/customer/{id}")
   public List<Events> findEventsByCustomerID(@PathVariable("id") Integer id) {
     return customerRepository.findEventByCustomerRegister(id);
+  }
+
+  @GetMapping(value = "/event/register/{id}")
+  public List<Register> findRegisterByCustomerId(@PathVariable("id") Integer id) {
+    return customerRepository.findRegisterByCustomerId(id);
   }
 
 }
