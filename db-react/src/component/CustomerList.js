@@ -186,7 +186,7 @@ class CustomerList extends Component {
                             color='green'
                             as={Link} to = {"/customer/"+ currentCustomer.id + "/register"}
                         >
-                          Register
+                          Register an Event
                         </Button>
                       </div>
                     </div>

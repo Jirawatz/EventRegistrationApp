@@ -87,9 +87,10 @@ class App extends Component {
                       <Route
                           path="/customer/:id/register"
                           render={(props) => <RegisterPage{...props}/>}/>
-                    <Route
-                        path="/customer/:id/host"
-                        render={(props) => <HostPage{...props}/>}/>
+                          <Route
+                            path="/event/host/:id"
+                            render={(props) => <HostPage{...props}/>}/>
+                          />
                 </Switch>
               </Grid.Column>
             </Grid.Row>

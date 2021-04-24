@@ -182,6 +182,11 @@ class OrganizerList extends Component {
                         >
                           Update
                         </Button>
+                        <Button
+                            as={Link} to = {"/event/host/" + currentOrganizer.id}
+                        >
+                          Looking For Event to Host
+                        </Button>
                       </div>
                     </div>
                 ) : (
