@@ -155,7 +155,6 @@ Installing Node and NPM Dependencies
 
 ```
 npm install
-npm install axios bootstrap react-router-dom semantic-ui-react semantic-ui-css
 ```
 
 Install Spring Boot Dependencies
