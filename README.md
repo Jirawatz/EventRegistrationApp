@@ -2,8 +2,42 @@ Event Registration Application
 ==
 Team members: Jirawat Zhou, Emre Gucer
 
-### Project Description
+### Problem statement
+With many events that take place in real world we will need a solution that allow organizer to manage their events efficiency, while also allows customers to signup for events.
+
+### Solution Description
 Proposed a web application that allows organizers to manage their events and attendees. While attendees can look and search for events that they are interested in and sign up for the events.
+```
+1. Allow User to SignUp/Register for Events
+2. Allow User to Add/Read/Edit/Delete Reviewsfor each Event
+3. Allow Organizer to Host/Schedule a Event
+4. Allow Organizer to Add/Read/Edit/Delete Events
+5. Allow User to create account to database
+6. Allow Organizer to create account to database
+```
+
+### User that would use my solution
+User that are looking for software that allow them to schedule event and allow their customer to signup for their event
+
+### Domain Objects
+Events Model: Represent the event which will contain the following information
+```
+1. name which represent the name of the event
+2. type which represent the format of the event (Expo, Conference, Concert).
+3. StartDate which represent the starting date of the event
+4. EndDate which represent the ending date of the event
+5. Description which represent the event description
+6. Fee which represent the fee to enter a event
+```
+
+Review Model: Represent the review for which customer can create a review for any events
+```
+1. score for which a customer can review
+2. comment for which a customer can comment/review the events
+3. CustomerId which represent the customer
+4. EventId which represent the event
+```
+
 
 ### UML Diagram
 ![alt text](ProjectUML.jpg)
