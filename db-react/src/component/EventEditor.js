@@ -236,6 +236,7 @@ class EventEditor extends Component {
               />
               <Form.Group>
               <Button
+                  color={"green"}
                   as={Link} to = "/"
                   onClick={() => this.saveEvent()}
               >Submit</Button>
@@ -243,6 +244,12 @@ class EventEditor extends Component {
                   as={Link} to = "/"
                   onClick={() => this.removeEvent()}
               >Delete</Button>
+                <Button
+                    as={Link} to = {"/review/event/" + this.props.match.params.id}
+                >Read Review</Button>
+                {this.props.match.params.regid && <Button
+                    as={Link} to = {"/host/" + this.props.match.params.regid + "/event/" + currentEvent.eventid + "/organizer/" + this.props.match.params.orgid}
+                >Back to Edit Hosting</Button>}
               </Form.Group>
             </Form>
           </div>

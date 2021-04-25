@@ -286,7 +286,7 @@ class HostEditor extends Component {
                     <div className="edit-form">
                         <Grid relaxed>
                             <Grid.Row>
-                                <Header as='h2'>Host Sign Up</Header>
+                                <Header as='h2'>Editing Hosting Information</Header>
                             </Grid.Row>
 
                             <Grid.Row>
@@ -340,6 +340,14 @@ class HostEditor extends Component {
                                             onChange={(e) => this.onChangeDOB(e)}
                                         />
                                     </Form>
+                                    <Button
+                                        className = "mt-3"
+                                        primary
+                                        as={Link}
+                                        to={"/organizer/find/" + currentOrganizer.id}
+                                    >
+                                        Back
+                                    </Button>
                                 </Grid.Column>
                                 <Grid.Column width={8}>
                                     <Form>
@@ -369,6 +377,13 @@ class HostEditor extends Component {
                                         onClick={() => this.saveHost()}
                                     >
                                         Update Host Info
+                                    </Button>
+                                    <Button
+                                        primary
+                                        as={Link}
+                                        to={"/event/find/" + currentEvent.eventid + "/" + this.props.match.params.hid + "/" + this.props.match.params.oid}
+                                    >
+                                        Update Event Info
                                     </Button>
                                     <Button
                                         as={Link}

@@ -298,12 +298,18 @@ class CustomerEditor extends Component {
                       <List.Item>
                         <List.Icon name='calendar' size='large' verticalAlign='middle'/>
                         <List.Content>
+                          <List.Content floated='right'>
+                            <Button
+                            as={Link} to={"/review/event/" + reg.eventid.eventid + "/" + currentCustomer.id}
+                            >Add Review</Button>
+                          </List.Content>
                           <Link
                               to={"/register/" + reg.registrationid + "/event/" + reg.eventid.eventid + "/customer/" + reg.customerid.id}>
                             <List.Header as='a'>{reg.eventid.name + " " + reg.eventid.type}</List.Header>
                           </Link>
                           <List.Description
-                              as='a'>{reg.eventid.startdate + " - " + reg.eventid.enddate}</List.Description>
+                              as='a'>{reg.eventid.startdate + " - " + reg.eventid.enddate}
+                          </List.Description>
                         </List.Content>
                       </List.Item>))}
                 </List>

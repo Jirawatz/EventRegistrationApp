@@ -286,7 +286,7 @@ class RegisterEditor extends Component {
                     <div className="edit-form">
                         <Grid relaxed>
                             <Grid.Row>
-                                <Header as='h2'>Register for an Event</Header>
+                                <Header as='h2'>Edit Registration Information</Header>
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={10}>
@@ -339,6 +339,13 @@ class RegisterEditor extends Component {
                                                 value)}
                                         />
                                     </Form>
+                                    <Button
+                                        className="mt-3"
+                                        primary
+                                        as={Link} to={"/customer/find/" + currentCustomer.id}
+                                    >
+                                        Back
+                                    </Button>
                                 </Grid.Column>
                                 <Grid.Column width={6}>
                                     <Form>

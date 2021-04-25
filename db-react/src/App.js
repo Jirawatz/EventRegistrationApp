@@ -63,7 +63,7 @@ class App extends Component {
                   <Route exact path="/organizer"
                          render={(props) => <OrganizerList {...props}/>}/>
                   <Route
-                      path="/event/find/:id"
+                      path="/event/find/:id/:regid?/:orgid?"
                       render={(props) => <EventUpdater {...props}/>}/>
                   <Route
                       path="/customer/find/:id"
@@ -72,7 +72,7 @@ class App extends Component {
                       path="/organizer/find/:id"
                       render={(props) => <OrganizerUpdate {...props}/>}/>
                   <Route
-                      path="/review/event/:id"
+                      path="/review/event/:id/:cid?"
                       render={(props) => <ReviewList {...props}/>}/>
                   <Route
                       path="/review/:id/event/:eventid/customer/:custid"

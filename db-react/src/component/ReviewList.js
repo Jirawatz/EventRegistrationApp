@@ -30,7 +30,7 @@ class ReviewList extends Component {
       customers: [],
       score: 0,
       comment: "",
-      currentUser: null,
+      currentUser: [],
       message: "",
       currentEvent : null,
       updated : false
@@ -40,6 +40,8 @@ class ReviewList extends Component {
   componentDidMount() {
     this.retrieveReview(this.props.match.params.id);
     this.retrieveEvent(this.props.match.params.id);
+    this.retrieveCustomerByID(this.props.match.params.cid);
+    console.log(this.props.match.params.cid);
     this.retreiveCustomer();
   }
 
@@ -110,7 +112,7 @@ class ReviewList extends Component {
     this.setState({
       comment : "",
       score : 0,
-      currentUser : null,
+      currentUser : [],
       updated : false
     });
   }
@@ -126,6 +128,7 @@ class ReviewList extends Component {
     const star = e
     this.setState({score: star});
   }
+
 
   saveReview() {
     //console.log("Save has been clicked");
@@ -150,7 +153,7 @@ class ReviewList extends Component {
 
 
   render() {
-    const {reviews, customers, score, comment} = this.state;
+    const {reviews, customers, score, comment, currentUser} = this.state;
     console.log("Render" + customers);
     return (
         <div>
@@ -194,7 +197,7 @@ class ReviewList extends Component {
             </div>
             <div className="mt-5">
               <h2>Add a Review</h2>
-              <Form>
+              <Form>{currentUser &&
                 <Dropdown
                     placeholder='Select User'
                     fluid
@@ -203,9 +206,10 @@ class ReviewList extends Component {
                       value: id,
                       text: firstName + " " + lastName
                     }))}
+                    value = {currentUser.id}
                     className="mt-2"
                     onChange = {(e,{value}) => this.retrieveCustomerByID(value)}
-                />
+                />}
                 <Form.TextArea
                     value={comment}
                     onChange={(e) => this.onChangeComment(e)}
@@ -225,6 +229,17 @@ class ReviewList extends Component {
                     primary
                     onClick={() => this.saveReview()}
                 />
+                <Form.Button
+                    className = "mt-3"
+                    as={Link} to = {"/event/find/" + this.props.match.params.id}
+                >Back to Event</Form.Button>
+                {this.props.match.params.cid &&
+                    <div>
+                <Form.Button
+                    className = "mt-3"
+                    as={Link} to = {"/customer/find/" + this.props.match.params.cid}
+                >Back to Customer</Form.Button>
+                    </div>}
               </Form>
             </div>
           </Comment.Group>
