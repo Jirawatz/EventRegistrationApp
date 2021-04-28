@@ -30,6 +30,10 @@ class CustomerService {
     return http.get(`/customer/api/event/register/${id}`)
   }
 
+  findCustomerByEvent(id) {
+    return http.get(`/customer/api/event/${id}`)
+  }
+
 }
 
 export default new CustomerService();

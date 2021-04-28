@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import EventsService from "../service/EventsService";
-import {Header, Input, Form, Button} from 'semantic-ui-react';
+import {Header, Input, Form, Button, Grid, List} from 'semantic-ui-react';
 import {Link} from "react-router-dom";
+import OrganizerService from "../service/OrganizerService";
+import CustomerService from "../service/CustomerService";
 
 const options = [
   { key: 'Expo', text: 'Expo', value: 'Expo' },
@@ -21,6 +23,8 @@ class EventEditor extends Component {
     this.saveEvent = this.saveEvent.bind(this);
     this.removeEvent = this.removeEvent.bind(this);
     this.getEvent = this.getEvent.bind(this);
+    this.getOrganizers = this.getOrganizers.bind(this);
+    this.getCustomers = this.getCustomers.bind(this);
 
     this.state = {
       currentEvent: {
@@ -31,13 +35,17 @@ class EventEditor extends Component {
         enddate: "",
         description: "",
         fee: ""
-      }
+      },
+      organizers : [],
+      customers : []
     };
   }
 
   componentDidMount() {
     console.log(this.props.match.params.id);
     this.getEvent(this.props.match.params.id);
+    this.getCustomers();
+    this.getOrganizers();
   }
 
   onChangeName(e) {
@@ -177,8 +185,36 @@ class EventEditor extends Component {
     });
   }
 
+  getOrganizers() {
+    OrganizerService.findOrganizerByEvent(this.props.match.params.id)
+    .then(response => {
+      this.setState({
+        organizers: response.data
+      });
+      console.log(response.data);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  }
+
+  getCustomers() {
+    CustomerService.findCustomerByEvent(this.props.match.params.id)
+    .then(response => {
+      this.setState({
+        customers: response.data
+      });
+      console.log(response.data);
+    })
+    .catch(e => {
+      console.log(e);
+    });
+  }
+
   render() {
-    const { currentEvent } = this.state;
+    const { currentEvent, organizers, customers } = this.state;
+
+    console.log(organizers);
 
     return (<div>
       {currentEvent ? (
@@ -252,6 +288,48 @@ class EventEditor extends Component {
                 >Back to Edit Hosting</Button>}
               </Form.Group>
             </Form>
+            <Grid className = "ml-2 mt-5">
+              <Grid.Row columns='equal'>
+                <Grid.Column>
+                  <h4>List of Organizers</h4>
+                  <List>
+
+                    {organizers && organizers.map((organizer) => (
+                    <List.Item>
+                      <List.Content>
+                        <Link to={"/organizer/find/" + organizer.id}>
+                        <List.Header as='a'>{organizer.firstName + " " + organizer.lastName}</List.Header>
+                        </Link>
+                        <List.Description>
+                          {"Company: " + organizer.company + "\n Phone: " + organizer.phone}
+                        </List.Description>
+                      </List.Content>
+                    </List.Item>
+                      ))}
+                  </List>
+                  </Grid.Column>
+                <Grid.Column>
+                  <h4>List of Customers</h4>
+                  <List>
+
+                    {customers && customers.map((customer) => (
+                        <List.Item>
+                          <List.Content>
+                            <Link to={"/customer/find/" + customer.id}>
+                              <List.Header as='a'>{customer.firstName + " " + customer.lastName}</List.Header>
+                            </Link>
+                            <List.Description>
+                              {"Email: " + customer.email}
+                            </List.Description>
+                          </List.Content>
+                        </List.Item>
+                    ))}
+                  </List>
+
+
+                </Grid.Column>
+              </Grid.Row>
+              </Grid>
           </div>
       ) : (
           <div>

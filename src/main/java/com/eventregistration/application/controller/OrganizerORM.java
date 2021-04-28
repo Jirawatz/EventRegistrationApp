@@ -70,4 +70,9 @@ public class OrganizerORM {
   public List<Host> findHostByOrganizerID(@PathVariable("id") Integer id) {
     return hostRepository.findHostByOrganizerID(id);
   }
+
+  @GetMapping(value = "/event/{id}")
+  public List<Organizer> findOrganizerByEvent(@PathVariable("id") Integer id) {
+    return organizerRepository.findOrganizerByEvent(id);
+  }
 }
